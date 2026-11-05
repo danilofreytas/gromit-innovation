@@ -1,0 +1,41 @@
+# Registros do site no GitHub Pages. Só DNS: proxied = false para o Pages emitir o HTTPS.
+# Os registros de e-mail (iCloud+: MX, SPF, DKIM) já existem na zona e NÃO são gerenciados aqui.
+
+locals {
+  pages_ipv4 = ["185.199.108.153", "185.199.109.153", "185.199.110.153", "185.199.111.153"]
+  pages_ipv6 = ["2606:50c0:8000::153", "2606:50c0:8001::153", "2606:50c0:8002::153", "2606:50c0:8003::153"]
+}
+
+resource "cloudflare_dns_record" "apex_a" {
+  for_each = toset(local.pages_ipv4)
+
+  zone_id = var.zone_id
+  name    = "@"
+  type    = "A"
+  content = each.value
+  ttl     = 1
+  proxied = false
+  comment = "GitHub Pages (gerenciado por Terraform)"
+}
+
+resource "cloudflare_dns_record" "apex_aaaa" {
+  for_each = toset(local.pages_ipv6)
+
+  zone_id = var.zone_id
+  name    = "@"
+  type    = "AAAA"
+  content = each.value
+  ttl     = 1
+  proxied = false
+  comment = "GitHub Pages (gerenciado por Terraform)"
+}
+
+resource "cloudflare_dns_record" "www" {
+  zone_id = var.zone_id
+  name    = "www"
+  type    = "CNAME"
+  content = "${var.github_user}.github.io"
+  ttl     = 1
+  proxied = false
+  comment = "GitHub Pages (gerenciado por Terraform)"
+}
