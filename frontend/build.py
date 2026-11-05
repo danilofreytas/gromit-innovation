@@ -22,6 +22,7 @@ PAGES = {
     "servicos.html": "/servicos/",
     "quem-somos.html": "/quem-somos/",
     "quem-somos-danilo.html": "/quem-somos/daniloreis/",
+    "quem-somos-priscilla.html": "/quem-somos/priscillacorrea/",
     "produtos.html": "/produtos/",
     "produtos-budget-bunny.html": "/produtos/budget-bunny/",
     "produtos-ursolandia.html": "/produtos/ursolandia/",
