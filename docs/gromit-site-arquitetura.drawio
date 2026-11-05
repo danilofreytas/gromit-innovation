@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="Claude" version="24.0.0">
+  <diagram id="gromit-site" name="Site Gromit - arquitetura e entrega">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="700" pageHeight="580" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="cA" value="Código, no seu computador" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=none;strokeColor=#888780;verticalAlign=top;align=left;spacingLeft=14;spacingTop=4;fontSize=12;fontColor=#5F5E5A;" vertex="1" parent="1">
+          <mxGeometry x="30" y="20" width="620" height="118" as="geometry"/>
+        </mxCell>
+        <mxCell id="cB" value="Publicação, a configurar" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=none;strokeColor=#888780;verticalAlign=top;align=left;spacingLeft=14;spacingTop=4;fontSize=12;fontColor=#5F5E5A;" vertex="1" parent="1">
+          <mxGeometry x="30" y="176" width="620" height="118" as="geometry"/>
+        </mxCell>
+        <mxCell id="cD" value="Serviços de terceiros" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=none;strokeColor=#888780;verticalAlign=top;align=left;spacingLeft=14;spacingTop=4;fontSize=12;fontColor=#5F5E5A;" vertex="1" parent="1">
+          <mxGeometry x="30" y="410" width="620" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="src" value="&lt;b&gt;src/*.html&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;texto das páginas&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5EE;strokeColor=#0F6E56;fontColor=#085041;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="54" width="160" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="build" value="&lt;b&gt;build.py&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;menu, rodapé, SEO&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5EE;strokeColor=#0F6E56;fontColor=#085041;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="260" y="54" width="160" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="site" value="&lt;b&gt;Site estático&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;HTML, CSS e JS&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5EE;strokeColor=#0F6E56;fontColor=#085041;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="460" y="54" width="160" height="56" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="gh" value="&lt;b&gt;GitHub&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;repositório e push&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1EFE8;strokeColor=#5F5E5A;fontColor=#444441;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="210" width="160" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="act" value="&lt;b&gt;GitHub Actions&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;build e checagens&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1EFE8;strokeColor=#5F5E5A;fontColor=#444441;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="260" y="210" width="160" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="pages" value="&lt;b&gt;GitHub Pages&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;hospeda com HTTPS&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1EFE8;strokeColor=#5F5E5A;fontColor=#444441;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="460" y="210" width="160" height="56" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="visit" value="&lt;b&gt;Visitante&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;gromit.com.br&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#888780;fontColor=#2C2C2A;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="260" y="322" width="160" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="cf" value="&lt;b&gt;Cloudflare DNS&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;só DNS, sem proxy&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1EFE8;strokeColor=#5F5E5A;fontColor=#444441;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="460" y="322" width="160" height="56" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="fs" value="&lt;b&gt;Formspree&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;a confirmar&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1EFE8;strokeColor=#5F5E5A;fontColor=#444441;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="440" width="160" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="icl" value="&lt;b&gt;iCloud+&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;e-mail do domínio&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5EE;strokeColor=#0F6E56;fontColor=#085041;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="260" y="440" width="160" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="gf" value="&lt;b&gt;Google Fonts&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;tipografia&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5EE;strokeColor=#0F6E56;fontColor=#085041;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="460" y="440" width="160" height="56" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeColor=#5F5E5A;" edge="1" parent="1" source="src" target="build"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeColor=#5F5E5A;" edge="1" parent="1" source="build" target="site"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeColor=#5F5E5A;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.9;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="site" target="gh"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="540" y="157"/><mxPoint x="204" y="157"/></Array></mxGeometry></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeColor=#5F5E5A;" edge="1" parent="1" source="gh" target="act"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeColor=#5F5E5A;" edge="1" parent="1" source="act" target="pages"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeColor=#5F5E5A;" edge="1" parent="1" source="visit" target="cf"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeColor=#5F5E5A;" edge="1" parent="1" source="cf" target="pages"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="lg1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5EE;strokeColor=#0F6E56;" vertex="1" parent="1">
+          <mxGeometry x="40" y="526" width="14" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="lt1" value="Pronto" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#5F5E5A;" vertex="1" parent="1">
+          <mxGeometry x="62" y="526" width="60" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="lg2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1EFE8;strokeColor=#5F5E5A;" vertex="1" parent="1">
+          <mxGeometry x="130" y="526" width="14" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="lt2" value="A configurar ou confirmar" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#5F5E5A;" vertex="1" parent="1">
+          <mxGeometry x="152" y="526" width="200" height="14" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
