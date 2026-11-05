@@ -329,3 +329,15 @@ header.nav::before { content: ""; position: absolute; top: -16px; left: 0; right
 header.nav { transition: transform .35s ease; }
 .nav-hide header.nav { transform: translateY(-130%); }
 header.nav:focus-within { transform: none; }
+
+/* formulário: honeypot e aviso de consentimento */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.consent { font-size: .82rem; color: #8b93a7; margin: 0; }
+.consent a { text-decoration: underline; }
+
+/* páginas legais */
+.legal { max-width: 760px; padding-bottom: 80px; }
+.legal h2 { font-size: 1.3rem; margin: 36px 0 10px; }
+.legal p, .legal li { color: #b8c0d4; line-height: 1.7; }
+.legal a { text-decoration: underline; }
+.legal .updated { margin-top: 36px; font-size: .85rem; color: #8b93a7; }
