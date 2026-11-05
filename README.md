@@ -89,7 +89,9 @@ O `check.py` falha o build se encontrar:
 - página sem `lang`, `<title>`, meta description ou canonical absoluto, ou com título/descrição repetidos;
 - link ou recurso interno inexistente, `<img>` sem `alt`, `target="_blank"` sem `rel="noopener"`;
 - página fora do `sitemap.xml`;
-- **regras de conteúdo**: telefone, e-mail, nome de empregador atual ou link para repositório privado no HTML.
+- **regras de conteúdo**: telefone, e-mail, link para repositório privado e **termos proibidos** (como nomes de
+  empregadores atuais) no HTML. Os termos não ficam no repositório: vêm da variável `FORBIDDEN_TERMS` (no CI, variável do
+  repositório) ou do arquivo local `frontend/.forbidden-terms`, ignorado pelo git (um termo por linha).
 
 ## CI/CD
 

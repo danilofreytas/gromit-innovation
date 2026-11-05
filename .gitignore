@@ -12,3 +12,6 @@ frontend/dist/
 crash.log
 *.tfvars
 !*.tfvars.example
+
+# termos proibidos (nomes que não podem aparecer no site): ficam fora do repositório
+frontend/.forbidden-terms

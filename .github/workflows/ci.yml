@@ -25,6 +25,9 @@ jobs:
       - name: Build
         run: python3 frontend/build.py
       - name: Verificações de conteúdo, links e SEO
+        env:
+          # Variável do repositório (Settings > Secrets and variables > Actions > Variables).
+          FORBIDDEN_TERMS: ${{ vars.FORBIDDEN_TERMS }}
         run: python3 frontend/check.py
 
   # Scanners de segurança em runner do GitHub (seguro para PRs de forks: token somente leitura).
