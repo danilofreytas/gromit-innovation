@@ -94,6 +94,9 @@ O `check.py` falha o build se encontrar:
 ## CI/CD
 
 - **CI (`.github/workflows/ci.yml`)**: em todo pull request, roda `build.py` e `check.py`.
+- **Segurança**: no mesmo `ci.yml`, em runner do GitHub, rodam **Gitleaks** (segredos em todo o histórico),
+  **Trivy** (vulnerabilidades, configuração e segredos) e **Semgrep** (análise estática). Imagens fixadas por versão;
+  qualquer achado reprova o PR. Como usam runners do GitHub, é seguro para PRs vindos de forks.
 - **Deploy (`.github/workflows/deploy.yml`)**: em push na `main`, gera o site e publica no GitHub Pages.
   Fica **desligado** até a variável de repositório `PAGES_ENABLED` valer `true`.
 - Todas as Actions estão fixadas por SHA de commit, com permissões mínimas, `concurrency` e `timeout`.
