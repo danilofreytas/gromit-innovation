@@ -30,10 +30,10 @@ PAGES = {
 }
 
 # Endereço público de cada produto. Deixe None enquanto não estiver no ar:
-# o botão aparece desativado ("Acesso em breve"). Quando existir, troque por
-# a URL (ex.: "https://budgetbunny.seudominio.com") e rode o build de novo.
+# o botão aparece desativado ("Acesso em breve"). Quando existir, informe a URL
+# e rode o build de novo.
 PRODUCT_LINKS = {
-    "budget-bunny": None,
+    "budget-bunny": "https://budgetbunny.gromit.com.br",
     "ursolandia": None,
 }
 
