@@ -1,0 +1,59 @@
+<!--title: Ursolândia-->
+<!--desc: Ursolândia: cadastro de ursinhos com RG, com site, API e um bot do Telegram que gera a carteirinha a partir de uma foto.-->
+  <div class="wrap phead">
+    <p class="crumb"><a href="/">Início</a> / <a href="/produtos/">Produtos</a> / Ursolândia</p>
+    <p class="st pst">uso familiar</p>
+    <h1>Ursolândia</h1>
+    <p class="lead">Cadastro de ursinhos com RG, frente e verso. É só mandar a foto pelo Telegram, responder algumas perguntas e receber a carteirinha pronta, que também aparece no site.</p>
+    <div class="btns">
+      <!--product-link-->
+      <a class="btn" href="https://github.com/danilofreytas/ursolandia" target="_blank" rel="noopener">Código no GitHub ↗</a>
+      <a class="btn" href="/produtos/">← Todos os produtos</a>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="card hero-art ur rv">
+      <div class="rg">
+        <div class="ph">🧸</div>
+        <dl><dt>NOME</dt><dd>Ursinho</dd><dt>ADOÇÃO</dt><dd>24/12/2023</dd><dt>PELO</dt><dd>Caramelo</dd></dl>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <p class="kicker rv">Como funciona</p>
+      <h2 class="rv">Da foto à carteirinha em um minuto.</h2>
+      <div class="feat steps">
+        <div class="card rv"><span class="n">1</span><h3>Manda a foto</h3><p>No Telegram, é só enviar uma foto do ursinho (ou usar <code>/novo</code> para cadastrar sem foto).</p></div>
+        <div class="card rv"><span class="n">2</span><h3>Responde às perguntas</h3><p>O bot pergunta nome, data de adoção, fantasia, cor do pelo e quem deu o ursinho (pode pular).</p></div>
+        <div class="card rv"><span class="n">3</span><h3>Recebe o RG</h3><p>O bot devolve frente e verso da carteirinha e o ursinho já aparece no site.</p></div>
+      </div>
+      <p class="sub rv" style="margin-top:32px">Também há comandos para listar, buscar um RG por nome e ver os aniversários de casa mais próximos. O bot só responde aos chats autorizados.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="kicker rv">Por dentro</p>
+      <h2 class="rv">Engenharia por trás do app.</h2>
+      <p class="sub rv">Site, API, banco de dados e bot rodam como serviços independentes em Kubernetes, e o bot reaproveita a mesma imagem da API. As carteirinhas são geradas como imagem pela própria API. É um projeto familiar, mas construído com o rigor de um ambiente de produção.</p>
+      <div class="tags big rv">
+        <span class="tag lg">React</span><span class="tag lg">TypeScript</span><span class="tag lg">Vite</span><span class="tag lg">FastAPI</span>
+        <span class="tag lg">PostgreSQL</span><span class="tag lg">Telegram Bot</span><span class="tag lg">Docker</span><span class="tag lg">Helm</span><span class="tag lg">Kubernetes</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="contact one rv">
+        <div>
+          <h2>Quer automatizar um processo com bot?</h2>
+          <p class="sub" style="margin-bottom:0">Levamos a infraestrutura e a operação para que o seu bot ou app rode estável.</p>
+        </div>
+        <div><a class="btn primary" href="/contato/">Falar com a Gromit →</a></div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,116 @@
+#!/usr/bin/env python3
+"""Gera as páginas estáticas a partir de src/*.html.
+
+Uso:  python3 build.py
+Cada arquivo em src/ começa com comentários <!--title:-->, <!--desc:--> e
+define o conteúdo de <main>. Menu e rodapé ficam só aqui.
+"""
+import re
+from pathlib import Path
+
+ROOT = Path(__file__).parent
+SRC = ROOT / "src"
+VERSION = "15"  # aumente para forçar recarregar CSS/JS no navegador
+
+# arquivo em src/  ->  URL final
+PAGES = {
+    "index.html": "/",
+    "servicos.html": "/servicos/",
+    "quem-somos.html": "/quem-somos/",
+    "quem-somos-danilo.html": "/quem-somos/daniloreis/",
+    "produtos.html": "/produtos/",
+    "produtos-budget-bunny.html": "/produtos/budget-bunny/",
+    "produtos-ursolandia.html": "/produtos/ursolandia/",
+    "contato.html": "/contato/",
+}
+
+# Endereço público de cada produto. Deixe None enquanto não estiver no ar:
+# o botão aparece desativado ("Acesso em breve"). Quando existir, troque por
+# a URL (ex.: "https://budgetbunny.seudominio.com") e rode o build de novo.
+PRODUCT_LINKS = {
+    "budget-bunny": None,
+    "ursolandia": None,
+}
+
+NAV = [("/servicos/", "Serviços"), ("/quem-somos/", "Quem somos"), ("/produtos/", "Produtos")]
+
+LAYOUT = """<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content="{desc}">
+  <link rel="canonical" href="{url}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v={v}">
+</head>
+<body>
+
+<div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+
+<header class="nav">
+  <div class="pill">
+    <a class="logo" href="/"><i></i>Gromit Innovation</a>
+    <ul>
+{nav}
+    </ul>
+    <a class="cta" href="/contato/">Contato</a>
+  </div>
+</header>
+
+<main id="top">
+{content}
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="y">2026</span> Gromit Innovation</span>
+    <span class="flinks"><a href="/servicos/">Serviços</a><a href="/quem-somos/">Quem somos</a><a href="/produtos/">Produtos</a><a href="/contato/">Contato</a></span>
+    <span class="tm">Logotipos e marcas citados pertencem aos respectivos proprietários e são usados apenas para identificar experiências e certificações.</span>
+  </div>
+</footer>
+
+<script src="/script.js?v={v}"></script>
+</body>
+</html>
+"""
+
+
+def meta(text, key):
+    m = re.search(rf"<!--\s*{key}:\s*(.*?)\s*-->", text)
+    return m.group(1) if m else ""
+
+
+def main():
+    for fname, url in PAGES.items():
+        text = (SRC / fname).read_text(encoding="utf-8")
+        title = meta(text, "title")
+        full_title = title if url == "/" else f"{title} | Gromit Innovation"
+        content = re.sub(r"<!--\s*(title|desc):.*?-->\s*", "", text)
+        for key, link in PRODUCT_LINKS.items():
+            if url == f"/produtos/{key}/":
+                btn = (
+                    f'<a class="btn primary" href="{link}" target="_blank" rel="noopener">Acessar o app ↗</a>'
+                    if link else
+                    '<span class="btn disabled" aria-disabled="true">Acesso em breve</span>'
+                )
+                content = content.replace("<!--product-link-->", btn)
+        nav = "\n".join(
+            f'      <li><a href="{h}"{" class=\"on\"" if url.startswith(h) else ""}>{t}</a></li>'
+            for h, t in NAV
+        )
+        html = LAYOUT.format(
+            title=full_title, desc=meta(text, "desc"), url=url,
+            nav=nav, content=content.strip(), v=VERSION,
+        )
+        out = ROOT / url.strip("/") / "index.html" if url != "/" else ROOT / "index.html"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(html, encoding="utf-8")
+        print("ok", url)
+
+
+if __name__ == "__main__":
+    main()
