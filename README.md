@@ -147,14 +147,13 @@ siga a seção de adoção única em [`infra/README.md`](infra/README.md).
 
 - Nenhum telefone, e-mail ou segredo em páginas públicas (garantido pelo `check.py`).
 - Nenhuma menção a empregadores atuais; clientes citados só de experiências passadas.
-- O formulário de contato envia os dados ao Formspree; o site não os armazena.
+- O formulário de contato envia os dados ao Formspree (conta da Gromit, com Formshield e campo honeypot); o site não os armazena. Detalhes na [Política de Privacidade](https://gromit.com.br/privacidade/).
 - HTTPS obrigatório, com HSTS, CSP e demais cabeçalhos de segurança aplicados no Cloudflare (Transform Rule); DNSSEC ativo na zona.
 - Branch `main` protegida por ruleset (PR e checks obrigatórios, sem force-push); varredura com Gitleaks, Trivy, Semgrep e CodeQL.
 - Para relatar uma vulnerabilidade, veja [SECURITY.md](SECURITY.md).
 
 ## Pendências
 
-- Confirmar o formulário do Formspree e adicionar aviso de privacidade (LGPD).
 - Definir a licença do repositório.
 - Revisar datas e textos do CV e das páginas.
 - Ativar o deploy no Pages e aplicar o DNS.
