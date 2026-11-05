@@ -54,5 +54,5 @@ jobs:
             fs --scanners vuln,misconfig,secret --severity HIGH,CRITICAL --exit-code 1 /src
       - name: Semgrep (análise estática)
         run: |
-          docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/src:ro" semgrep/semgrep:1.184.0 \
+          docker run --rm --user "$(id -u):$(id -g)" -e HOME=/tmp -v "$PWD:/src:ro" semgrep/semgrep:1.184.0 \
             semgrep scan --config p/default --metrics=off --error /src
