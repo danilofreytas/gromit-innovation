@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
-"""Gera as páginas estáticas a partir de src/*.html.
+"""Gera o site estático em frontend/dist a partir de src/*.html e public/.
 
 Uso:  python3 build.py
 Cada arquivo em src/ começa com comentários <!--title:-->, <!--desc:--> e
 define o conteúdo de <main>. Menu e rodapé ficam só aqui.
 """
 import re
+import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).parent
 SRC = ROOT / "src"
+PUBLIC = ROOT / "public"   # arquivos estáticos copiados como estão (css, js, logos, CV, CNAME)
+DIST = ROOT / "dist"       # saída do build; não é versionada
+SITE_URL = "https://gromit.com.br"
 VERSION = "15"  # aumente para forçar recarregar CSS/JS no navegador
 
 # arquivo em src/  ->  URL final
@@ -41,7 +45,16 @@ LAYOUT = """<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <meta name="description" content="{desc}">
-  <link rel="canonical" href="{url}">
+  <link rel="canonical" href="{canonical}">
+  <meta name="theme-color" content="#0b0f14">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Gromit Innovation">
+  <meta property="og:title" content="{title}">
+  <meta property="og:description" content="{desc}">
+  <meta property="og:url" content="{canonical}">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -84,7 +97,21 @@ def meta(text, key):
     return m.group(1) if m else ""
 
 
+def write_seo_files():
+    urls = "\n".join(f"  <url><loc>{SITE_URL}{u}</loc></url>" for u in PAGES.values())
+    (DIST / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + "\n</urlset>\n",
+        encoding="utf-8")
+    (DIST / "robots.txt").write_text(
+        f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
+    print("ok sitemap.xml, robots.txt")
+
+
 def main():
+    if DIST.exists():
+        shutil.rmtree(DIST)
+    shutil.copytree(PUBLIC, DIST)
     for fname, url in PAGES.items():
         text = (SRC / fname).read_text(encoding="utf-8")
         title = meta(text, "title")
@@ -103,13 +130,14 @@ def main():
             for h, t in NAV
         )
         html = LAYOUT.format(
-            title=full_title, desc=meta(text, "desc"), url=url,
+            title=full_title, desc=meta(text, "desc"), canonical=SITE_URL + url,
             nav=nav, content=content.strip(), v=VERSION,
         )
-        out = ROOT / url.strip("/") / "index.html" if url != "/" else ROOT / "index.html"
+        out = DIST / url.strip("/") / "index.html" if url != "/" else DIST / "index.html"
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(html, encoding="utf-8")
         print("ok", url)
+    write_seo_files()
 
 
 if __name__ == "__main__":

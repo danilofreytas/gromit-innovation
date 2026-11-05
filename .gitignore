@@ -1,2 +1,14 @@
 .DS_Store
 .claude/
+__pycache__/
+
+# build
+frontend/dist/
+
+# terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+*.tfvars
+!*.tfvars.example
