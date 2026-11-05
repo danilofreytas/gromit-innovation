@@ -69,7 +69,7 @@ header.nav { position: fixed; top: 16px; left: 0; right: 0; z-index: 20; }
 .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--a); box-shadow: 0 0 0 0 var(--a); animation: pulse 2s infinite; }
 @keyframes pulse { 70% { box-shadow: 0 0 0 9px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
 .hero h1 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); line-height: 1.05; letter-spacing: -.035em; font-weight: 700; text-wrap: balance; }
-.hero h1 .h1-sub { display: block; margin-top: .3em; font-size: .6em; line-height: 1.2; font-weight: 600; letter-spacing: -.02em; }
+.hero h1 .h1-sub { display: block; margin-top: .3em; font-size: .6em; line-height: 1.2; font-weight: 600; letter-spacing: -.02em; text-wrap: balance; }
 .hero h1 .h1-sub .grad { font-weight: 700; }
 .nw { white-space: nowrap; }
 .hero .lead { color: var(--muted); font-size: 1.15rem; max-width: 52ch; margin: 26px 0 36px; }
