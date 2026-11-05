@@ -9,7 +9,7 @@
         <mxCell id="cA" value="Código, no seu computador" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=none;strokeColor=#888780;verticalAlign=top;align=left;spacingLeft=14;spacingTop=4;fontSize=12;fontColor=#5F5E5A;" vertex="1" parent="1">
           <mxGeometry x="30" y="20" width="620" height="118" as="geometry"/>
         </mxCell>
-        <mxCell id="cB" value="Publicação, a configurar" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=none;strokeColor=#888780;verticalAlign=top;align=left;spacingLeft=14;spacingTop=4;fontSize=12;fontColor=#5F5E5A;" vertex="1" parent="1">
+        <mxCell id="cB" value="Publicação" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=none;strokeColor=#888780;verticalAlign=top;align=left;spacingLeft=14;spacingTop=4;fontSize=12;fontColor=#5F5E5A;" vertex="1" parent="1">
           <mxGeometry x="30" y="176" width="620" height="118" as="geometry"/>
         </mxCell>
         <mxCell id="cD" value="Serviços de terceiros" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=none;strokeColor=#888780;verticalAlign=top;align=left;spacingLeft=14;spacingTop=4;fontSize=12;fontColor=#5F5E5A;" vertex="1" parent="1">
@@ -26,20 +26,20 @@
           <mxGeometry x="460" y="54" width="160" height="56" as="geometry"/>
         </mxCell>
 
-        <mxCell id="gh" value="&lt;b&gt;GitHub&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;repositório e push&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1EFE8;strokeColor=#5F5E5A;fontColor=#444441;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="gh" value="&lt;b&gt;GitHub&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;repositório público&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5EE;strokeColor=#0F6E56;fontColor=#085041;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="60" y="210" width="160" height="56" as="geometry"/>
         </mxCell>
-        <mxCell id="act" value="&lt;b&gt;GitHub Actions&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;build e checagens&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1EFE8;strokeColor=#5F5E5A;fontColor=#444441;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="act" value="&lt;b&gt;GitHub Actions&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;build e verificações&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5EE;strokeColor=#0F6E56;fontColor=#085041;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="260" y="210" width="160" height="56" as="geometry"/>
         </mxCell>
-        <mxCell id="pages" value="&lt;b&gt;GitHub Pages&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;hospeda com HTTPS&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1EFE8;strokeColor=#5F5E5A;fontColor=#444441;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="pages" value="&lt;b&gt;GitHub Pages&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;hospeda o site&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5EE;strokeColor=#0F6E56;fontColor=#085041;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="460" y="210" width="160" height="56" as="geometry"/>
         </mxCell>
 
         <mxCell id="visit" value="&lt;b&gt;Visitante&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;gromit.com.br&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#888780;fontColor=#2C2C2A;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="260" y="322" width="160" height="56" as="geometry"/>
         </mxCell>
-        <mxCell id="cf" value="&lt;b&gt;Cloudflare DNS&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;só DNS, sem proxy&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1EFE8;strokeColor=#5F5E5A;fontColor=#444441;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="cf" value="&lt;b&gt;Cloudflare&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;proxy e HTTPS&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5EE;strokeColor=#0F6E56;fontColor=#085041;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="460" y="322" width="160" height="56" as="geometry"/>
         </mxCell>
 

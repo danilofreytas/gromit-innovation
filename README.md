@@ -14,7 +14,7 @@ Os diagramas são arquivos [draw.io](https://www.drawio.com) editáveis, em [`do
 ![Visão geral](docs/gromit-site-arquitetura.png)
 
 ### Infraestrutura e entrega
-Domínio no Registro.br, DNS no Cloudflare (só DNS, sem proxy), hospedagem no GitHub Pages, e-mail no iCloud+.
+Domínio no Registro.br, DNS e HTTPS no Cloudflare (proxy ligado), hospedagem no GitHub Pages, e-mail no iCloud+.
 Fonte: [`gromit-site-infra.drawio`](docs/gromit-site-infra.drawio)
 
 ![Infraestrutura](docs/gromit-site-infra.png)
@@ -112,7 +112,15 @@ pessoais (o CV atual já foi gerado sem telefone e e-mail).
 1. Tornar o repositório público.
 2. Settings > Pages > Source: **GitHub Actions**.
 3. Settings > Secrets and variables > Actions > Variables: criar `PAGES_ENABLED` = `true`.
-4. Aplicar o DNS (abaixo) e, em Settings > Pages, confirmar o domínio `gromit.com.br` e ativar **Enforce HTTPS**.
+4. Aplicar o DNS (abaixo) e, em Settings > Pages, definir o domínio `gromit.com.br`. O HTTPS é do Cloudflare (seção abaixo).
+
+## HTTPS
+
+O HTTPS de `gromit.com.br` é terminado pelo **Cloudflare**, com os registros do site em modo proxy:
+certificado universal gerenciado e renovado automaticamente, modo de criptografia **Full** e **Always Use HTTPS** ligado
+(HTTP redireciona para HTTPS e o `www` redireciona para o domínio sem `www`). O GitHub Pages não aceita certificado próprio,
+e o certificado que ele emite para o domínio não é necessário nesse arranjo, então o "Enforce HTTPS" do Pages fica desligado.
+O `budgetbunny` não passa pelo proxy: o HTTPS dele é da Vercel.
 
 ## Infra (DNS)
 

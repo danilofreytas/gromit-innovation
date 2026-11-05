@@ -1,7 +1,7 @@
 # infra: DNS do site no Cloudflare
 
 Registros de `gromit.com.br` gerenciados por Terraform: o site no GitHub Pages (4 A, 4 AAAA e o CNAME `www`) e o
-`budgetbunny` (CNAME para a Vercel). Todos **sem proxy** (DNS only). Os registros de e-mail do iCloud+ (MX, SPF, DKIM,
+`budgetbunny` (CNAME para a Vercel). Os do site ficam **com proxy** do Cloudflare, que termina o HTTPS (modo Full); o do `budgetbunny` fica **sem proxy**, porque a Vercel cuida do HTTPS dele. Os registros de e-mail do iCloud+ (MX, SPF, DKIM,
 DMARC) e as verificações TXT **não** são gerenciados aqui.
 
 ## Uso normal

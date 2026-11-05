@@ -1,4 +1,5 @@
-# Registros do site no GitHub Pages. Só DNS: proxied = false para o Pages emitir o HTTPS.
+# Registros do site no GitHub Pages, COM proxy do Cloudflare: o Cloudflare termina o HTTPS (Universal SSL, modo Full)
+# e renova o certificado sozinho; o certificado do GitHub Pages para o domínio não é necessário.
 # Os registros de e-mail (iCloud+: MX, SPF, DKIM) já existem na zona e NÃO são gerenciados aqui.
 
 locals {
@@ -14,7 +15,7 @@ resource "cloudflare_dns_record" "apex_a" {
   type    = "A"
   content = each.value
   ttl     = 1
-  proxied = false
+  proxied = true
   comment = "GitHub Pages (gerenciado por Terraform)"
 }
 
@@ -26,7 +27,7 @@ resource "cloudflare_dns_record" "apex_aaaa" {
   type    = "AAAA"
   content = each.value
   ttl     = 1
-  proxied = false
+  proxied = true
   comment = "GitHub Pages (gerenciado por Terraform)"
 }
 
@@ -36,11 +37,11 @@ resource "cloudflare_dns_record" "www" {
   type    = "CNAME"
   content = "${var.github_user}.github.io"
   ttl     = 1
-  proxied = false
+  proxied = true
   comment = "GitHub Pages (gerenciado por Terraform)"
 }
 
-# Budget Bunny: o frontend roda na Vercel; o CNAME aponta para o alvo genérico dela.
+# Budget Bunny: o frontend roda na Vercel; o CNAME aponta para o alvo genérico dela, SEM proxy (a Vercel cuida do HTTPS).
 resource "cloudflare_dns_record" "budgetbunny" {
   zone_id = var.zone_id
   name    = "budgetbunny"
