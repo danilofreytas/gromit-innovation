@@ -52,7 +52,10 @@ jobs:
         run: |
           docker run --rm -v "$PWD:/src:ro" aquasec/trivy:0.76.2 \
             fs --scanners vuln,misconfig,secret --severity HIGH,CRITICAL --exit-code 1 /src
+      # A regra excluída é de templates Django; o site é HTML estático e o formulário envia ao Formspree
+      # (sem sessão de usuário), então não há token CSRF aplicável: falso positivo.
       - name: Semgrep (análise estática)
         run: |
           docker run --rm --user "$(id -u):$(id -g)" -e HOME=/tmp -v "$PWD:/src:ro" semgrep/semgrep:1.184.0 \
-            semgrep scan --config p/default --metrics=off --error /src
+            semgrep scan --config p/default --metrics=off --error \
+            --exclude-rule python.django.security.django-no-csrf-token.django-no-csrf-token /src

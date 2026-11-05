@@ -4,7 +4,13 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    # Espera 7 dias antes de propor versões recém-publicadas (mitiga pacotes comprometidos).
+    cooldown:
+      default-days: 7
   - package-ecosystem: terraform
     directory: /infra
     schedule:
       interval: weekly
+    # Espera 7 dias antes de propor versões recém-publicadas (mitiga pacotes comprometidos).
+    cooldown:
+      default-days: 7
