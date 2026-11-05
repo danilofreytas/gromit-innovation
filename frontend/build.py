@@ -93,6 +93,16 @@ LAYOUT = """<!DOCTYPE html>
 """
 
 
+def count_certifications():
+    """Certificações e cursos listados nas páginas de currículo dos sócios (número exibido na home)."""
+    total = 0
+    for fname in ("quem-somos-danilo.html", "quem-somos-priscilla.html"):
+        text = (SRC / fname).read_text(encoding="utf-8")
+        m = re.search(r'<p class="kicker rv">Certificações</p>(.*?)</section>', text, flags=re.S)
+        total += len(re.findall(r'class="card edu rv"', m.group(1))) if m else 0
+    return total
+
+
 def meta(text, key):
     m = re.search(rf"<!--\s*{key}:\s*(.*?)\s*-->", text)
     return m.group(1) if m else ""
@@ -110,11 +120,12 @@ def write_seo_files():
 
 
 def main():
+    certs = str(count_certifications())
     if DIST.exists():
         shutil.rmtree(DIST)
     shutil.copytree(PUBLIC, DIST)
     for fname, url in PAGES.items():
-        text = (SRC / fname).read_text(encoding="utf-8")
+        text = (SRC / fname).read_text(encoding="utf-8").replace("{{CERTS}}", certs)
         title = meta(text, "title")
         full_title = title if url == "/" else f"{title} | Gromit Innovation"
         content = re.sub(r"<!--\s*(title|desc):.*?-->\s*", "", text)

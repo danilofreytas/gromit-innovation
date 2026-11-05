@@ -27,6 +27,7 @@ SITE_URL = "https://gromit.com.br"
 FORBIDDEN = {
     "e-mail": re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+"),
     "telefone": re.compile(r"(\(\d{2}\)\s?|\b\d{2}\s)9?\d{4}[-\s]?\d{4}\b"),
+    "marcador sem substituir": re.compile(r"\{\{[A-Z_]+\}\}"),
     "repositório privado": re.compile(r"github\.com/danilofreytas/(Budget-Bunny|ursolandia)", re.I),
 }
 
