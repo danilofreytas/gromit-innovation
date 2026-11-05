@@ -39,3 +39,14 @@ resource "cloudflare_dns_record" "www" {
   proxied = false
   comment = "GitHub Pages (gerenciado por Terraform)"
 }
+
+# Budget Bunny: o frontend roda na Vercel; o CNAME aponta para o alvo genérico dela.
+resource "cloudflare_dns_record" "budgetbunny" {
+  zone_id = var.zone_id
+  name    = "budgetbunny"
+  type    = "CNAME"
+  content = "cname.vercel-dns.com"
+  ttl     = 1
+  proxied = false
+  comment = "Budget Bunny na Vercel (gerenciado por Terraform)"
+}

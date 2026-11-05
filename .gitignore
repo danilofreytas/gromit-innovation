@@ -15,3 +15,6 @@ crash.log
 
 # termos proibidos (nomes que não podem aparecer no site): ficam fora do repositório
 frontend/.forbidden-terms
+
+# import temporário do DNS (traz IDs da conta Cloudflare)
+*.local.tf

@@ -126,6 +126,8 @@ terraform apply
 ```
 
 Os registros de e-mail do iCloud+ (MX, SPF, DKIM) já existem na zona e **não** são gerenciados por este Terraform.
+Os registros do site e do `budgetbunny` já existem na zona (criados à mão): para o Terraform adotá-los sem recriar,
+siga a seção de adoção única em [`infra/README.md`](infra/README.md).
 
 ## Convenções
 
