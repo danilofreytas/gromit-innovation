@@ -55,4 +55,4 @@ jobs:
       - name: Semgrep (análise estática)
         run: |
           docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/src:ro" semgrep/semgrep:1.184.0 \
-            semgrep scan --config auto --metrics=off --error /src
+            semgrep scan --config p/default --metrics=off --error /src
