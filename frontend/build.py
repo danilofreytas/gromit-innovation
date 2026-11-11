@@ -14,20 +14,24 @@ SRC = ROOT / "src"
 PUBLIC = ROOT / "public"   # arquivos estáticos copiados como estão (css, js, logos, CV, CNAME)
 DIST = ROOT / "dist"       # saída do build; não é versionada
 SITE_URL = "https://gromit.com.br"
-VERSION = "33"  # aumente para forçar recarregar CSS/JS no navegador
+VERSION = "51"  # aumente para forçar recarregar CSS/JS no navegador
 
 # arquivo em src/  ->  URL final
 PAGES = {
     "index.html": "/",
-    "servicos.html": "/servicos/",
-    "quem-somos.html": "/quem-somos/",
     "quem-somos-danilo.html": "/quem-somos/daniloreis/",
     "quem-somos-priscilla.html": "/quem-somos/priscillacorrea/",
-    "produtos.html": "/produtos/",
-    "produtos-budget-bunny.html": "/produtos/budget-bunny/",
-    "produtos-ursolandia.html": "/produtos/ursolandia/",
-    "contato.html": "/contato/",
     "privacidade.html": "/privacidade/",
+}
+
+# Páginas antigas, agora seções da home: ficam como redirecionamento (noindex), para nenhum link quebrar.
+REDIRECTS = {
+    "/servicos/": ("Serviços", "#servicos", "Os serviços da Gromit agora ficam na página inicial, na seção Serviços."),
+    "/quem-somos/": ("Quem somos", "#equipe", "A apresentação da equipe da Gromit agora fica na página inicial, na seção Equipe."),
+    "/produtos/": ("Produtos", "#produtos", "Os produtos próprios da Gromit agora ficam na página inicial, na seção Produtos."),
+    "/produtos/budget-bunny/": ("Budget Bunny", "#produtos", "O Budget Bunny, app de finanças pessoais, agora aparece na seção Produtos da página inicial."),
+    "/produtos/ursolandia/": ("Ursolândia", "#produtos", "A Ursolândia, cadastro de ursinhos com RG, agora aparece na seção Produtos da página inicial."),
+    "/contato/": ("Contato", "#contato", "Os canais de contato da Gromit agora ficam na página inicial, na seção Contato."),
 }
 
 # Endereço público de cada produto. Deixe None enquanto não estiver no ar:
@@ -68,7 +72,7 @@ def _starfield():
             + "".join(out) + "</svg>")
 
 
-NAV = [("/servicos/", "Serviços"), ("/quem-somos/", "Quem somos"), ("/produtos/", "Produtos")]
+NAV = [("/#frentes", "Frentes"), ("/#servicos", "Serviços"), ("/#produtos", "Produtos"), ("/#equipe", "Equipe")]
 
 LAYOUT = """<!DOCTYPE html>
 <html lang="pt-BR">
@@ -105,7 +109,7 @@ LAYOUT = """<!DOCTYPE html>
     <ul>
 {nav}
     </ul>
-    <a class="cta" href="/contato/">Contato</a>
+    <a class="cta" href="/#contato">Contato</a>
   </div>
 </header>
 
@@ -116,7 +120,7 @@ LAYOUT = """<!DOCTYPE html>
 <footer>
   <div class="wrap">
     <span class="fbrand">{flogo}<small>© <span id="y">2026</span> Gromit Innovation</small></span>
-    <span class="flinks"><a href="/servicos/">Serviços</a><a href="/quem-somos/">Quem somos</a><a href="/produtos/">Produtos</a><a href="/contato/">Contato</a><a href="https://www.linkedin.com/company/gromit-innovation" target="_blank" rel="noopener">LinkedIn</a><a href="/privacidade/">Privacidade</a></span>
+    <span class="flinks"><a href="/#frentes">Frentes</a><a href="/#servicos">Serviços</a><a href="/#produtos">Produtos</a><a href="/#equipe">Equipe</a><a href="/#contato">Contato</a><a href="mailto:contato@gromit.com.br">E-mail</a><a href="https://www.linkedin.com/company/gromit-innovation" target="_blank" rel="noopener">LinkedIn</a><a href="/privacidade/">Privacidade</a></span>
     <span class="tm">Logotipos e marcas citados pertencem aos respectivos proprietários e são usados apenas para identificar experiências e certificações.</span>
   </div>
 </footer>
@@ -153,15 +157,14 @@ def main():
         full_title = title if url == "/" else f"{title} | Gromit Innovation"
         content = re.sub(r"<!--\s*(title|desc):.*?-->\s*", "", text)
         for key, link in PRODUCT_LINKS.items():
-            if url == f"/produtos/{key}/":
-                btn = (
-                    f'<a class="btn primary" href="{link}" target="_blank" rel="noopener">Acessar o app ↗</a>'
-                    if link else
-                    '<span class="btn disabled" aria-disabled="true">Acesso em breve</span>'
-                )
-                content = content.replace("<!--product-link-->", btn)
+            btn = (
+                f'<a class="btn" href="{link}" target="_blank" rel="noopener">Acessar o app ↗</a>'
+                if link else
+                '<span class="btn disabled" aria-disabled="true">Acesso em breve</span>'
+            )
+            content = content.replace(f"<!--product-link-{key}-->", btn)
         nav = "\n".join(
-            f'      <li><a href="{h}"{" class=\"on\"" if url.startswith(h) else ""}>{t}</a></li>'
+            f'      <li><a href="{h}"{" class=\"on\"" if (h == "/#equipe" and url.startswith("/quem-somos/")) else ""}>{t}</a></li>'
             for h, t in NAV
         )
         html = LAYOUT.format(
@@ -173,7 +176,28 @@ def main():
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(html, encoding="utf-8")
         print("ok", url)
+    write_redirects()
     write_seo_files()
+
+
+def write_redirects():
+    for url, (title, anchor, desc) in REDIRECTS.items():
+        target = "/" + anchor
+        html = (
+            '<!DOCTYPE html>\n<html lang="pt-BR">\n<head>\n  <meta charset="UTF-8">\n'
+            '  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
+            f'  <title>{title} | Gromit Innovation</title>\n  <meta name="description" content="{desc}">\n'
+            f'  <meta name="robots" content="noindex">\n  <link rel="canonical" href="{SITE_URL}/">\n'
+            f'  <meta http-equiv="refresh" content="0; url={target}">\n  <link rel="icon" href="/favicon.svg" type="image/svg+xml">\n'
+            '  <meta name="theme-color" content="#060C1C">\n</head>\n'
+            '<body style="background:#060C1C;color:#EEF1F6;font-family:system-ui,sans-serif;padding:40px">\n'
+            f'  <p>Esta página foi incorporada à página inicial. <a href="{target}" style="color:#38BDF8">Ir para {title}</a>.</p>\n'
+            f'  <script>location.replace("{target}")</script>\n</body>\n</html>\n'
+        )
+        out = DIST / url.strip("/") / "index.html"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(html, encoding="utf-8")
+        print("ok", url, "->", target)
 
 
 if __name__ == "__main__":
