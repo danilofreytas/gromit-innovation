@@ -14,7 +14,7 @@ SRC = ROOT / "src"
 PUBLIC = ROOT / "public"   # arquivos estáticos copiados como estão (css, js, logos, CV, CNAME)
 DIST = ROOT / "dist"       # saída do build; não é versionada
 SITE_URL = "https://gromit.com.br"
-VERSION = "55"  # aumente para forçar recarregar CSS/JS no navegador
+VERSION = "57"  # aumente para forçar recarregar CSS/JS no navegador
 
 # arquivo em src/  ->  URL final
 PAGES = {
@@ -34,12 +34,12 @@ REDIRECTS = {
     "/contato/": ("Contato", "#contato", "Os canais de contato da Gromit agora ficam na página inicial, na seção Contato."),
 }
 
-# Endereço público de cada produto. Deixe None enquanto não estiver no ar:
+# Endereço da demonstração de cada produto. Deixe None enquanto não estiver no ar:
 # o botão aparece desativado ("Acesso em breve"). Quando existir, informe a URL
 # e rode o build de novo.
 PRODUCT_LINKS = {
-    "budget-bunny": "https://budgetbunny.gromit.com.br",
-    "ursolandia": None,
+    "budget-bunny": "https://budgetbunny-demo.gromit.com.br",
+    "ursolandia": "https://ursolandia-demo.gromit.com.br",
 }
 
 
@@ -158,7 +158,7 @@ def main():
         content = re.sub(r"<!--\s*(title|desc):.*?-->\s*", "", text)
         for key, link in PRODUCT_LINKS.items():
             btn = (
-                f'<a class="btn" href="{link}" target="_blank" rel="noopener">Acessar o app ↗</a>'
+                f'<a class="btn" href="{link}" target="_blank" rel="noopener">Ver demonstração ↗</a>'
                 if link else
                 '<span class="btn disabled" aria-disabled="true">Acesso em breve</span>'
             )
