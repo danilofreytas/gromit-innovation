@@ -120,17 +120,21 @@
     proto.classList.add('js');
     var sticky = proto.querySelector('.proto-sticky');
     var pinned = function () { return getComputedStyle(sticky).position === 'sticky'; };
+    var topOff = function () { return Math.max(88, Math.round((window.innerHeight - sticky.offsetHeight) / 2)); };
     var range = function () { return Math.max(proto.offsetHeight - sticky.offsetHeight, 1); };
     var fit = function () {
       // em telas baixas o bloco não cabe: sem fixar, só clique
       var tooTall = sticky.offsetHeight > window.innerHeight - 100;
       proto.classList.toggle('nopin', tooTall);
+      sticky.style.top = topOff() + 'px';   // em telas altas o bloco fica centralizado
+      // comprimento da rolagem = altura do bloco + 38% da tela por etapa
+      proto.style.height = tooTall ? '' : (sticky.offsetHeight + total * window.innerHeight * 0.38) + 'px';
     };
     var onProto = function () {
       fit();
       if (!pinned()) return;
       var r = proto.getBoundingClientRect();
-      var p = Math.min(Math.max((-r.top + 88) / range(), 0), 0.9999);
+      var p = Math.min(Math.max((-r.top + topOff()) / range(), 0), 0.9999);
       setStage(Math.floor(p * total));
     };
     window.addEventListener('scroll', onProto, { passive: true });
@@ -141,7 +145,7 @@
         setStage(k);
         if (!pinned()) return;
         var top = proto.getBoundingClientRect().top + window.scrollY;
-        var y = top - 88 + (k + 0.5) / total * range();
+        var y = top - topOff() + (k + 0.5) / total * range();
         window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
       });
     });
