@@ -843,3 +843,13 @@ section[id] { scroll-margin-top: -24px; }
 @media (prefers-reduced-motion: reduce) { .wide-art * { animation: none !important; } }
 .sechead { grid-template-columns: minmax(0, 1fr) minmax(280px, 400px); gap: 32px; }
 .sechead-text h2 { font-size: clamp(1.9rem, 3.6vw, 2.7rem); max-width: none; }
+
+/* Protótipo em telas altas: o quadro cresce com a altura da tela e fica centralizado */
+.proto-stage { height: clamp(500px, calc(100vh - 300px), 640px); }
+.proto-frame { display: flex; flex-direction: column; }
+.pp.on { flex: 1; grid-template-rows: auto auto auto 1fr; }
+.pp .viz { align-content: start; }
+@media (max-width: 900px) { .proto-stage { height: auto; } }
+/* Equipe: título curto, então a cena acompanha a altura do título */
+#equipe .sechead { margin-bottom: 28px; }
+#equipe .sechead .wide-art { max-height: 104px; width: auto; justify-self: end; }
