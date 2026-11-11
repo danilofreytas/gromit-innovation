@@ -866,3 +866,8 @@ section[id] { scroll-margin-top: -24px; }
 @media (max-width: 640px) {
   .certs, .feat, .what { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Espaço entre o último card e o rodapé */
+#contato { padding-bottom: 0; }
+footer { margin-top: 56px; }
+@media (max-width: 900px) { #contato { padding-bottom: 0; } footer { margin-top: 40px; } }
