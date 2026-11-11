@@ -38,7 +38,7 @@
       '<span class="k">api-7c9d</span>     <span class="ok">Running</span>   3/3',
       '<span class="k">worker-5b2f</span>  <span class="ok">Running</span>   2/2',
       '<span class="p">$</span> gromit status',
-      '<span class="ok">✔</span> observabilidade  <span class="ok">✔</span> pipelines  <span class="ok">✔</span> backups',
+      '<span class="ok"><svg class=\"chk\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg></span> observabilidade  <span class="ok"><svg class=\"chk\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg></span> pipelines  <span class="ok"><svg class=\"chk\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg></span> backups',
       '<span class="w">tudo saudável.</span> <span class="cursor"></span>'
     ];
     if (reduce) {
@@ -126,16 +126,12 @@
     });
   }
 
-  // Formulário: pré-seleciona a frente vinda de /contato/?frente=infra|dev
-  var sel = document.getElementById('frente');
-  if (sel) {
+  // Contato: realça a frente vinda de /contato/?frente=infra|dev
+  var chans = document.querySelectorAll('[data-front]');
+  if (chans.length) {
     try {
       var f = new URLSearchParams(window.location.search).get('frente');
-      if (f) {
-        for (var j = 0; j < sel.options.length; j++) {
-          if (sel.options[j].getAttribute('data-key') === f) { sel.selectedIndex = j; break; }
-        }
-      }
+      chans.forEach(function (el) { el.classList.toggle('hl', el.getAttribute('data-front') === f); });
     } catch (e) {}
   }
 

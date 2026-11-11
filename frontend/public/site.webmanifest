@@ -1,0 +1,14 @@
+{
+  "name": "Gromit Innovation",
+  "short_name": "Gromit",
+  "description": "Consultoria em DevOps, infraestrutura, SRE e desenvolvimento.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B1B3F",
+  "theme_color": "#0B1B3F",
+  "icons": [
+    {"src": "/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
