@@ -14,7 +14,7 @@ SRC = ROOT / "src"
 PUBLIC = ROOT / "public"   # arquivos estáticos copiados como estão (css, js, logos, CV, CNAME)
 DIST = ROOT / "dist"       # saída do build; não é versionada
 SITE_URL = "https://gromit.com.br"
-VERSION = "56"  # aumente para forçar recarregar CSS/JS no navegador
+VERSION = "57"  # aumente para forçar recarregar CSS/JS no navegador
 
 # arquivo em src/  ->  URL final
 PAGES = {
@@ -38,7 +38,7 @@ REDIRECTS = {
 # o botão aparece desativado ("Acesso em breve"). Quando existir, informe a URL
 # e rode o build de novo.
 PRODUCT_LINKS = {
-    "budget-bunny": "https://bunnybudget-demo.gromit.com.br",
+    "budget-bunny": "https://budgetbunny-demo.gromit.com.br",
     "ursolandia": "https://ursolandia-demo.gromit.com.br",
 }
 
