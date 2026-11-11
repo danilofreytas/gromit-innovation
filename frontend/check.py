@@ -6,7 +6,7 @@ Falha (exit 1) se encontrar:
   - títulos ou descrições repetidos entre páginas;
   - link/recurso interno que não existe no dist;
   - <img> sem alt; link target=_blank sem rel="noopener";
-  - telefone, e-mail ou termo proibido (ex.: empregador atual) no HTML (regra de conteúdo);
+  - telefone, e-mail (exceto contato@gromit.com.br) ou termo proibido (ex.: empregador atual) no HTML (regra de conteúdo);
   - link para repositório privado (retornaria 404 ao visitante);
   - página fora do sitemap.xml.
 Só usa a biblioteca padrão do Python.
@@ -25,7 +25,7 @@ DIST = Path(__file__).parent / "dist"
 SITE_URL = "https://gromit.com.br"
 
 FORBIDDEN = {
-    "e-mail": re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+"),
+    "e-mail": re.compile(r"(?<![\w.+-])(?!contato@gromit\.com\.br(?![\w.-]))[\w.+-]+@[\w-]+\.[\w.-]+"),
     "telefone": re.compile(r"(\(\d{2}\)\s?|\b\d{2}\s)9?\d{4}[-\s]?\d{4}\b"),
     "marcador sem substituir": re.compile(r"\{\{[A-Z_]+\}\}"),
     "repositório privado": re.compile(r"github\.com/danilofreytas/(Budget-Bunny|ursolandia)", re.I),
@@ -53,6 +53,7 @@ class Page(HTMLParser):
         self.title = ""
         self.description = ""
         self.canonical = ""
+        self.noindex = False
         self.links: list[str] = []
         self.errors: list[str] = []
         self._in_title = False
@@ -65,6 +66,8 @@ class Page(HTMLParser):
             self._in_title = True
         elif tag == "meta" and a.get("name") == "description":
             self.description = (a.get("content") or "").strip()
+        elif tag == "meta" and a.get("name") == "robots" and "noindex" in (a.get("content") or ""):
+            self.noindex = True
         elif tag == "link" and a.get("rel") == "canonical":
             self.canonical = a.get("href") or ""
         if tag in ("a", "link") and a.get("href"):
@@ -144,6 +147,8 @@ def main() -> int:
     sitemap = (DIST / "sitemap.xml").read_text(encoding="utf-8") if (DIST / "sitemap.xml").exists() else ""
     for f in pages:
         rel = "/" + f.parent.relative_to(DIST).as_posix() + "/" if f.parent != DIST else "/"
+        if '<meta name="robots" content="noindex">' in f.read_text(encoding="utf-8"):
+            continue  # redirecionamentos não entram no sitemap
         if f"<loc>{SITE_URL}{rel}</loc>" not in sitemap:
             errors.append(f"[{rel}] fora do sitemap.xml")
     for needed in ("robots.txt", "favicon.svg", "CNAME"):

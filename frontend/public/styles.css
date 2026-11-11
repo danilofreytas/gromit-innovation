@@ -454,7 +454,7 @@ header.nav:focus-within { transform: none; }
 .pp .viz .dim { color: var(--muted); }
 .proto-note { font-size: .8rem; color: var(--muted); margin-top: 14px; }
 /* Com rolagem: o quadro fica fixo e as etapas passam */
-.proto.js { height: calc(var(--n) * 62vh); }
+.proto.js { height: calc(var(--n) * 42vh); }
 .proto.js .proto-stage { position: sticky; top: 96px; }
 .flow-key { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
 
@@ -534,7 +534,7 @@ a:focus-visible, button:focus-visible, .btn:focus-visible { outline: 2px solid v
   .proto-steps { grid-auto-flow: column; grid-auto-columns: max-content; overflow-x: auto; scrollbar-width: none; gap: 6px; padding-bottom: 2px; }
   .proto-steps small { display: none; }
   .proto-steps button { white-space: nowrap; }
-  .proto.js { height: calc(var(--n) * 55vh); }
+  .proto.js { height: calc(var(--n) * 40vh); }
   .proto.js .proto-stage { top: 76px; }
   .proto-frame { min-height: 0; }
   .duo .term, .duo .uic { min-height: 0; }
@@ -589,13 +589,13 @@ h1, h2 { font-weight: 700; letter-spacing: -.02em; }
 
 /* Logo animado: o cursor >_ pisca como no terminal */
 .logo { display: block; line-height: 0; }
-.lg { height: 58px; width: auto; display: block; }
-.lg .lg-cur { animation: blink 1.2s steps(1) infinite; }
+svg.lg { height: 58px; width: auto; display: block; }
+svg.lg .lg-cur { animation: blink 1.2s steps(1) infinite; }
 .nav .pill { padding: 6px 14px 6px 22px; }
-@media (max-width: 700px) { .lg { height: 44px; } }
+@media (max-width: 700px) { svg.lg { height: 44px; } }
 .fbrand { display: flex; flex-direction: column; gap: 10px; }
 .fbrand small { font-size: .8rem; opacity: .85; }
-.lg.lg-foot { height: 52px; }
+svg.lg.lg-foot { height: 52px; }
 
 /* Símbolo animado na abertura */
 .hero.top { position: relative; }
@@ -697,3 +697,149 @@ footer { border-top: 1px solid var(--line); }
 .chan .role { color: var(--f); font-family: var(--mono); font-size: .76rem; }
 .chan > p { color: var(--muted); margin-bottom: 20px; }
 .chan.hl { box-shadow: 0 0 0 1px var(--f), 0 24px 60px -30px var(--f); }
+
+/* Landing page */
+section[id] { scroll-margin-top: 0; }
+.fsec[id] { scroll-margin-top: 24px; }
+.card.fr { display: flex; flex-direction: column; }
+.card.fr .go { margin-top: auto; padding-top: 18px; align-self: flex-start; }
+.fhead h3 { font-size: clamp(1.5rem, 3vw, 2.1rem); max-width: none; margin-bottom: 6px; line-height: 1.1; }
+.fsec + .fsec { padding-top: 56px; }
+.stats.three { grid-template-columns: repeat(3, 1fr); margin-bottom: 4px; }
+.stats.three .stat { flex-direction: column; align-items: flex-start; gap: 10px; }
+.btns.col { flex-direction: column; align-items: stretch; }
+.btns.col .btn { justify-content: center; }
+.svcgrid .svc .tags { margin-top: auto; padding-top: 18px; }
+.svc-head p { font-size: .94rem; color: var(--muted); }
+@media (max-width: 900px) { .stats.three { grid-template-columns: 1fr; } }
+
+/* ===== Protótipo: título e quadro fixos juntos; a tela tem a altura da lista ===== */
+.proto { margin-top: 56px; }
+.proto.js { height: calc(var(--n) * 38vh + 560px); }
+.proto.js .proto-sticky { position: sticky; top: 88px; }
+.proto.js .proto-stage { position: static; }
+.proto.js.nopin { height: auto; }
+.proto.js.nopin .proto-sticky { position: static; }
+.proto-sticky .kicker { margin-bottom: 10px; }
+.proto-sticky .ptitle { font-size: clamp(1.25rem, 2.4vw, 1.6rem); letter-spacing: -.02em; line-height: 1.2; max-width: 46ch; margin: 0 0 8px; }
+.proto-sticky .psub { color: var(--muted); font-size: .95rem; margin: 0 0 22px; }
+.proto-stage { grid-template-columns: 280px 1fr; align-items: stretch; gap: 24px; }
+.proto-steps { align-content: space-between; gap: 4px; }
+.proto-steps button { padding: 8px 12px; }
+.proto-frame { contain: size layout; min-height: 0; }
+.pp { padding: 22px 26px; gap: 14px; }
+
+/* ===== Ritmo de espaçamento (landing) ===== */
+section { padding-top: 96px; }
+.sub { margin: 14px 0 40px; }
+#frentes { padding-top: 72px; }
+.duo { padding-bottom: 56px; }
+.hero.top { padding-bottom: 32px; }
+.fsec { padding-top: 0; }
+.fsec + .fsec { padding-top: 40px; }
+.fhead { margin-bottom: 20px; padding: 22px 26px; }
+.svcgrid, .products { gap: 16px; }
+.stats.three { margin-bottom: 0; }
+#equipe .products { margin-top: 16px !important; }
+#contato .products { margin-top: 16px !important; }
+#contato { padding-bottom: 96px; }
+@media (max-width: 900px) {
+  section { padding-top: 64px; }
+  .proto { margin-top: 40px; }
+  .proto.js { height: calc(var(--n) * 34vh + 520px); }
+  .proto-frame { contain: none; min-height: 320px; }
+  .fsec + .fsec { padding-top: 32px; }
+  #contato { padding-bottom: 64px; }
+}
+
+/* Como contratar (dentro de Serviços) */
+.hire { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px; }
+.hire .card { padding: 24px 26px; }
+.hire .hk { display: block; font-family: var(--mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--azure); margin-bottom: 10px; }
+.hire h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.hire p { font-size: .95rem; }
+@media (max-width: 900px) { .hire { grid-template-columns: 1fr; } }
+
+/* Cartões: o que fica no rodapé do card alinha entre irmãos */
+.card.person { display: flex; flex-direction: column; }
+.card.person .go { margin-top: auto; padding-top: 16px; align-self: flex-start; }
+.card.person .about-bio { margin-bottom: 16px; }
+.card.prod { display: flex; flex-direction: column; }
+.card.prod .body { flex: 1; display: flex; flex-direction: column; }
+.card.prod .body > .btn { margin-top: auto; align-self: flex-start; }
+.card.prod .body .tags { margin: 14px 0 20px; }
+.card.chan { display: flex; flex-direction: column; }
+.card.chan .btns { margin-top: auto; }
+.sub + .hire { margin-top: 0; }
+
+/* Badges: não esticam na linha e o texto fica centrado */
+.skills, .tags, .tags.big, .chips { align-items: flex-start; }
+.tag { display: inline-flex; align-items: center; line-height: 1.3; }
+.chip { display: inline-flex; align-items: center; line-height: 1.3; }
+
+/* Serviços: um painel por frente, com os serviços em lista */
+.hire.card { display: block; padding: 24px 28px; margin: 0 0 16px; }
+.hire .hk { display: block; font-family: var(--mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--azure); margin-bottom: 14px; }
+.hirecols { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.hirecols > div { padding: 0 28px; }
+.hirecols > div:first-child { padding-left: 0; border-right: 1px solid var(--line); }
+.hirecols > div:last-child { padding-right: 0; }
+.hirecols h3 { font-size: 1.15rem; margin-bottom: 6px; }
+.hirecols p { font-size: .94rem; }
+.svcpanels { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
+.svcpanel { padding: 28px; display: flex; flex-direction: column; }
+.svcpanel:hover { transform: none; }
+.panelhead { display: flex; align-items: center; gap: 18px; padding-bottom: 22px; border-bottom: 1px solid var(--f-line); }
+.panelhead .avatar { width: 64px; height: 64px; border-radius: 18px; flex: none; }
+.panelhead .kicker { margin-bottom: 4px; }
+.panelhead h3 { font-size: 1.5rem; margin: 0; }
+.svclist { list-style: none; flex: 1; display: grid; grid-auto-rows: 1fr; }
+.svclist li { display: grid; grid-template-columns: 44px 1fr; gap: 16px; padding: 20px 0; border-bottom: 1px dashed var(--line); align-content: start; }
+.svclist li:last-child { border-bottom: 0; padding-bottom: 0; }
+.svclist .ic { width: 44px; height: 44px; margin: 0; border-radius: 14px; }
+.svclist h4 { font-family: var(--display); font-size: 1.05rem; letter-spacing: -.01em; margin-bottom: 4px; }
+.svclist p { font-size: .92rem; color: var(--muted); }
+.svclist .tags { margin-top: 12px; }
+#servicos .svcpanel[id] { scroll-margin-top: 24px; }
+@media (max-width: 900px) {
+  .hirecols { grid-template-columns: 1fr; }
+  .hirecols > div { padding: 0; }
+  .hirecols > div:first-child { border-right: 0; border-bottom: 1px solid var(--line); padding-bottom: 16px; margin-bottom: 16px; }
+  .svcpanels { grid-template-columns: 1fr; }
+  .svcpanel { padding: 22px; }
+}
+
+/* Produtos: versão desktop e mobile lado a lado */
+.prod .art.gifart { height: 290px; }
+.gifart .phone { position: absolute; right: 16px; bottom: 14px; width: 116px; height: auto; border-radius: 18px; border: 3px solid #0B1B3F; box-shadow: 0 18px 40px -10px rgba(0, 0, 0, .7), 0 0 0 1px rgba(255, 255, 255, .14); background: #fff; }
+@media (max-width: 900px) { .prod .art.gifart { height: 250px; } .gifart .phone { width: 100px; } }
+
+/* Cabeçalho de seção com ilustração animada ao lado */
+.sechead { display: grid; grid-template-columns: 1fr minmax(180px, 260px); gap: 32px; align-items: center; margin-bottom: 40px; }
+.sechead .sub { margin-bottom: 0; }
+.sechead-text h2 { max-width: 22ch; }
+.sechead .phead-art { width: 100%; max-height: 230px; justify-self: end; }
+@media (max-width: 900px) { .sechead { grid-template-columns: 1fr; margin-bottom: 28px; } .sechead .phead-art { display: none; } }
+
+/* Âncoras: o título para perto do topo (o menu se esconde ao navegar) */
+section[id] { scroll-margin-top: -24px; }
+.svcpanel[id], .fsec[id] { scroll-margin-top: 16px; }
+.sechead { grid-template-columns: 1fr minmax(150px, 200px); }
+.sechead .phead-art { max-height: 190px; }
+.sechead { align-items: start; }
+.sechead .phead-art { align-self: center; }
+#frentes { scroll-margin-top: 0; }
+
+/* Cabeçalho de seção: cena horizontal animada */
+.sechead { grid-template-columns: minmax(0, 1fr) minmax(320px, 520px); gap: 40px; }
+.sechead .wide-art { width: 100%; height: auto; align-self: center; overflow: visible; display: block; }
+.wide-art .a-stars circle { animation: twinkle 5s ease-in-out infinite; }
+.wide-art .a-pulse, .wide-art .a-wave, .wide-art .a-trace { transform-box: fill-box; transform-origin: center; }
+.wide-art .a-pulse { animation: apulse 2.4s ease-in-out infinite; }
+.wide-art .a-wave { animation: awave 2.8s ease-out infinite; }
+.wide-art .a-wave.w2 { animation-delay: -.9s; } .wide-art .a-wave.w3 { animation-delay: -1.8s; }
+.wide-art .a-trace { animation: dash 6s linear infinite; }
+@media (max-width: 900px) { .sechead .wide-art { display: none; } }
+@media (prefers-reduced-motion: reduce) { .wide-art * { animation: none !important; } }
+.sechead { grid-template-columns: minmax(0, 1fr) minmax(280px, 400px); gap: 32px; }
+.sechead-text h2 { font-size: clamp(1.9rem, 3.6vw, 2.7rem); max-width: none; }

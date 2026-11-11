@@ -1,10 +1,11 @@
 (function () {
   var y = document.getElementById('y');
   if (y) y.textContent = new Date().getFullYear();
-  var lastY = window.scrollY;
+  var lastY = window.scrollY, anchorLock = false;
   var onScroll = function () {
     var y = window.scrollY, root = document.documentElement;
     root.classList.toggle('scrolled', y > 20);
+    if (anchorLock) { lastY = y; return; }
     // Esconde o menu ao descer (para não cobrir o conteúdo) e mostra ao subir
     if (y > 140 && y > lastY + 4) root.classList.add('nav-hide');
     else if (y < lastY - 4 || y <= 140) root.classList.remove('nav-hide');
@@ -12,6 +13,16 @@
   };
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Clique em âncora da própria página: esconde o menu durante a rolagem para o título não ficar sob ele
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"], a[href^="/#"]');
+    if (!a) return;
+    var id = a.getAttribute('href').replace(/^\/?#/, '');
+    if (!id || !document.getElementById(id)) return;
+    anchorLock = true; document.documentElement.classList.add('nav-hide');
+    clearTimeout(window.__anchorT);
+    window.__anchorT = setTimeout(function () { anchorLock = false; }, reduce ? 200 : 1300);
+  });
 
   // Faixa de tecnologias (somente na home)
   var track = document.getElementById('track');
@@ -107,21 +118,31 @@
     };
     setStage(0);
     proto.classList.add('js');
-    var stageTop = function () { return proto.getBoundingClientRect().top + window.scrollY; };
+    var sticky = proto.querySelector('.proto-sticky');
+    var pinned = function () { return getComputedStyle(sticky).position === 'sticky'; };
+    var range = function () { return Math.max(proto.offsetHeight - sticky.offsetHeight, 1); };
+    var fit = function () {
+      // em telas baixas o bloco não cabe: sem fixar, só clique
+      var tooTall = sticky.offsetHeight > window.innerHeight - 100;
+      proto.classList.toggle('nopin', tooTall);
+    };
     var onProto = function () {
+      fit();
+      if (!pinned()) return;
       var r = proto.getBoundingClientRect();
-      var span = proto.offsetHeight - window.innerHeight * 0.6;
-      var p = Math.min(Math.max((-r.top + 96) / Math.max(span, 1), 0), 0.9999);
+      var p = Math.min(Math.max((-r.top + 88) / range(), 0), 0.9999);
       setStage(Math.floor(p * total));
     };
     window.addEventListener('scroll', onProto, { passive: true });
     window.addEventListener('resize', onProto);
+    onProto();
     btns.forEach(function (b, k) {
       b.addEventListener('click', function () {
-        var span = proto.offsetHeight - window.innerHeight * 0.6;
-        var y = stageTop() - 96 + (k + 0.5) / total * span;
-        window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
         setStage(k);
+        if (!pinned()) return;
+        var top = proto.getBoundingClientRect().top + window.scrollY;
+        var y = top - 88 + (k + 0.5) / total * range();
+        window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
       });
     });
   }
@@ -133,6 +154,24 @@
       var f = new URLSearchParams(window.location.search).get('frente');
       chans.forEach(function (el) { el.classList.toggle('hl', el.getAttribute('data-front') === f); });
     } catch (e) {}
+  }
+
+  // Movimento reduzido: as cenas dos cabeçalhos ficam paradas
+  if (reduce) document.querySelectorAll('.wide-art animateMotion, .wide-art animate').forEach(function (n) { n.remove(); });
+
+  // Menu: destaca a seção que está na tela (landing)
+  var spyLinks = document.querySelectorAll('.nav ul a[href^="/#"]');
+  if (spyLinks.length && document.getElementById('servicos') && 'IntersectionObserver' in window) {
+    var byId = {};
+    spyLinks.forEach(function (a) { byId[a.getAttribute('href').slice(2)] = a; });
+    var so = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        spyLinks.forEach(function (a) { a.classList.remove('on'); });
+        if (byId[e.target.id]) byId[e.target.id].classList.add('on');
+      });
+    }, { rootMargin: '-35% 0px -60% 0px' });
+    Object.keys(byId).forEach(function (id) { var el = document.getElementById(id); if (el) so.observe(el); });
   }
 
   // Revelar ao rolar
