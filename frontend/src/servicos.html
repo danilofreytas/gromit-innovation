@@ -1,200 +1,177 @@
 <!--title: Serviços-->
-<!--desc: Duas frentes de serviços: DevOps, infraestrutura e SRE (arquitetura, segurança, cloud, Kubernetes, CI/CD e FinOps) e desenvolvimento fullstack (web, portais, automação, mobile e IA aplicada).-->
+<!--desc: Duas frentes de serviços: desenvolvimento e produto, liderado por Priscilla Correa (web, portais, automação, mobile e IA), e DevOps, infraestrutura e SRE, liderado por Danilo Freitas dos Reis (arquitetura, segurança, Kubernetes, CI/CD, cloud e FinOps).-->
   <div class="wrap phead">
     <p class="crumb"><a href="/">Início</a> / Serviços</p>
     <h1>Infraestrutura, segurança e desenvolvimento, de ponta a ponta.</h1>
-    <p class="lead">Atuamos em duas frentes: DevOps, infraestrutura e SRE, e desenvolvimento fullstack. Cada serviço abaixo pode ser contratado isolado ou combinado, conforme o momento da sua empresa.</p>
+    <p class="lead">Atuamos em duas frentes, cada uma liderada por um dos sócios: desenvolvimento e produto, e DevOps, infraestrutura e SRE. Cada serviço abaixo pode ser contratado isolado ou combinado, conforme o momento da sua empresa.</p>
   </div>
 
   <div class="wrap">
     <p class="kicker rv">Formas de contratar</p>
     <div class="feat" style="margin-top:20px">
-      <div class="card rv"><h3>Projeto com escopo fechado</h3><p>Para objetivos claros, como desenhar uma arquitetura, elevar a segurança, evoluir para Kubernetes estruturar a esteira de deploy ou aumentar a eficiência de custo. Escopo, prazo e entregas combinados desde o início.</p></div>
+      <div class="card rv"><h3>Projeto com escopo fechado</h3><p>Para objetivos claros, como desenhar uma arquitetura, elevar a segurança, evoluir para Kubernetes, estruturar a esteira de deploy ou aumentar a eficiência de custo. Escopo, prazo e entregas combinados desde o início.</p></div>
       <div class="card rv"><h3>Consultoria recorrente</h3><p>Um especialista, de infraestrutura ou de desenvolvimento, ao lado do seu time por uma carga horária mensal, para arquitetura, revisão e evolução contínua.</p></div>
       <div class="card rv"><h3>Sustentação e SRE contínuo</h3><p>Acompanhamento do ambiente em produção, com observabilidade, resposta a incidentes e melhoria constante da confiabilidade.</p></div>
     </div>
   </div>
 
-  <div class="wrap" style="padding-top:60px">
-    <p class="kicker rv">Frente 1 · DevOps, infraestrutura e SRE</p>
-  </div>
-
-  <div class="wrap stack" style="padding-top:24px">
-    <article class="card svc rv" id="arquitetura">
-      <div class="ic">🏛️</div>
-      <div>
-        <h2>Arquitetura de Software e Soluções</h2>
-        <p><b>Resultado:</b> plataformas desenhadas para durar: escaláveis, resilientes, seguras e fáceis de evoluir, com decisões técnicas claras desde o início.</p>
-        <ul class="checks">
-          <li>Arquitetura cloud-native na AWS e GCP (ECS, CloudFront, WAF, ALB/NLB, EKS/GKE)</li>
-          <li>Microsserviços e arquitetura orientada a eventos</li>
-          <li>Desenho de ambientes, isolamento, rastreabilidade e estratégias de deploy</li>
-          <li>Revisão de arquitetura e decisões técnicas documentadas</li>
-          <li>Apoio a aplicações com dados e IA, usando serviços nativos da AWS</li>
-          <li>Formação: pós em Arquitetura de Software, Ciência de Dados e Cybersecurity (PUC-PR)</li>
-        </ul>
-        <p class="for"><b>Ideal para</b> quem vai lançar um produto, modernizar uma plataforma ou quer uma segunda opinião técnica antes de decidir.</p>
-        <div class="tags"><span class="tag">AWS</span><span class="tag">GCP</span><span class="tag">Microsserviços</span><span class="tag">Event-driven</span><span class="tag">Cloud-native</span></div>
+  <!-- Frente de desenvolvimento -->
+  <section class="fsec front-dev" id="dev">
+    <div class="wrap">
+      <div class="fhead rv">
+        <span class="avatar big" aria-hidden="true">PC</span>
+        <div>
+          <p class="kicker">Desenvolvimento e produto · liderado por Priscilla Correa</p>
+          <h2>Software que o seu time consegue evoluir.</h2>
+          <p class="sub">Interfaces rápidas, acessíveis e bem estruturadas, ligadas a APIs e automações que eliminam trabalho manual.</p>
+        </div>
       </div>
-    </article>
 
-    <article class="card svc rv" id="seguranca">
-      <div class="ic">🔐</div>
-      <div>
-        <h2>Segurança e Conformidade</h2>
-        <p><b>Resultado:</b> segurança integrada ao desenho e à operação, que protege o negócio e dá confiança para crescer e passar em auditorias.</p>
-        <ul class="checks">
-          <li>Segurança em cloud: IAM com acesso mínimo, segregação de ambientes, organização de contas e backups</li>
-          <li>Conformidade com LGPD, ISO 27001 e PCI-DSS</li>
-          <li>Segurança nas esteiras de entrega: build seguro, validações automatizadas e rastreabilidade</li>
-          <li>Hardening de servidores e boas práticas de cybersecurity</li>
-          <li>Monitoramento e visão defensiva com Splunk e Datadog</li>
-          <li>Formação: pós em Cybersecurity (PUC-PR) e em Defensive Cyber Security, Blue Team (FIAP, em andamento)</li>
-        </ul>
-        <p class="for"><b>Ideal para</b> quem quer elevar a maturidade de segurança, se preparar para auditorias ou integrar segurança ao dia a dia do time.</p>
-        <div class="tags"><span class="tag">IAM</span><span class="tag">LGPD</span><span class="tag">ISO 27001</span><span class="tag">PCI-DSS</span><span class="tag">Blue Team</span></div>
+      <div class="svcgrid">
+        <article class="card svc fr-dev rv" id="fullstack">
+          <div class="ic">🌐</div>
+          <h3>Desenvolvimento Web e Front-end</h3>
+          <p><b>Resultado:</b> aplicações web rápidas, acessíveis e bem estruturadas, que o seu time consegue manter e evoluir.</p>
+          <ul class="checks">
+            <li>Aplicações com React, Next.js, TypeScript e JavaScript, com HTML e CSS responsivos</li>
+            <li>Acessibilidade e SEO desde a semântica do HTML</li>
+            <li>Integração com APIs REST e refatoração de código existente</li>
+            <li>Arquitetura de front-end: Clean Architecture e microfrontends</li>
+            <li>Entrega contínua com GitHub Actions e Azure DevOps, com a infraestrutura da frente de DevOps</li>
+            <li>Trabalho direto com o cliente: levantamento de requisitos, priorização e apresentação de entregas, em Scrum e Kanban</li>
+          </ul>
+          <p class="for"><b>Ideal para</b> quem vai lançar um produto, refazer um site ou aplicação, ou precisa de reforço em front-end.</p>
+          <div class="tags"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Acessibilidade</span><span class="tag">SEO</span></div>
+        </article>
+
+        <article class="card svc fr-dev rv" id="portais">
+          <div class="ic">🗂️</div>
+          <h3>Portais e Plataformas Microsoft</h3>
+          <p><b>Resultado:</b> processos e informações centralizados, em portais fáceis de usar e de manter.</p>
+          <ul class="checks">
+            <li>Portais corporativos com React e Python, integrados a serviços Microsoft</li>
+            <li>SharePoint Online (PnP PowerShell) e Power Platform</li>
+            <li>Gestão de conteúdo por listas do SharePoint</li>
+            <li>Documentação dos processos para garantir continuidade</li>
+          </ul>
+          <p class="for"><b>Ideal para</b> quem quer centralizar processos e informações da empresa em um portal.</p>
+          <div class="tags"><span class="tag">SharePoint</span><span class="tag">Power Platform</span><span class="tag">React</span><span class="tag">Azure</span></div>
+        </article>
+
+        <article class="card svc fr-dev rv" id="automacao">
+          <div class="ic">⚙️</div>
+          <h3>Automação e Integrações</h3>
+          <p><b>Resultado:</b> menos trabalho manual e mais tempo para o que importa.</p>
+          <ul class="checks">
+            <li>Automações em Python e PowerShell: extração e cruzamento de dados do SharePoint e de APIs REST, rotinas agendadas e relatórios em CSV e Excel</li>
+            <li>Testes automatizados</li>
+            <li>Extensões para Chrome e web scraping para tarefas repetitivas</li>
+            <li>Integração com APIs REST</li>
+          </ul>
+          <p class="for"><b>Ideal para</b> quem quer eliminar tarefas manuais e rotinas repetitivas.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">PowerShell</span><span class="tag">APIs REST</span><span class="tag">Web scraping</span></div>
+        </article>
+
+        <article class="card svc fr-dev rv" id="mobile">
+          <div class="ic">📱</div>
+          <h3>Mobile, Interfaces e IA Aplicada</h3>
+          <p><b>Resultado:</b> experiências digitais bem desenhadas, em qualquer tela, com IA usada onde ela realmente ajuda.</p>
+          <ul class="checks">
+            <li>Aplicativos com React Native e Flutter</li>
+            <li>Design de interfaces e protótipos no Figma, com foco em usabilidade (UI/UX)</li>
+            <li>Soluções com IA nos serviços do Azure e no GitHub Copilot</li>
+            <li>Capacitação do time: treinamentos de React e de IA no desenvolvimento</li>
+          </ul>
+          <p class="for"><b>Ideal para</b> quem quer um app, um protótipo validado ou apoio para adotar IA no desenvolvimento.</p>
+          <div class="tags"><span class="tag">React Native</span><span class="tag">Flutter</span><span class="tag">Figma</span><span class="tag">Azure AI</span></div>
+        </article>
       </div>
-    </article>
+      <div class="fcta rv"><a class="btn primary" href="/contato/?frente=dev">Falar com a Gromit →</a></div>
+    </div>
+  </section>
 
-    <article class="card svc rv" id="sre">
-      <div class="ic">📡</div>
-      <div>
-        <h2>SRE e Confiabilidade</h2>
-        <p><b>Resultado:</b> um ambiente que você acompanha com clareza e evolui com confiança. Mais disponibilidade, decisões baseadas em dados e uma operação cada vez mais previsível.</p>
-        <ul class="checks">
-          <li>Observabilidade de ponta a ponta: métricas, logs e alertas úteis</li>
-          <li>SLIs e SLOs definidos junto com o negócio</li>
-          <li>Resposta a incidentes e aprendizado que vira melhoria contínua</li>
-          <li>Desenho de alta disponibilidade e arquitetura resiliente</li>
-        </ul>
-        <p class="for"><b>Ideal para</b> quem quer mais visibilidade e previsibilidade na operação.</p>
-        <div class="tags"><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">Datadog</span><span class="tag">Splunk</span><span class="tag">Zabbix</span></div>
+  <!-- Frente de infraestrutura -->
+  <section class="fsec front-infra" id="infra">
+    <div class="wrap">
+      <div class="fhead rv">
+        <span class="avatar big" aria-hidden="true">DR</span>
+        <div>
+          <p class="kicker">DevOps, infraestrutura e SRE · liderado por Danilo Freitas dos Reis</p>
+          <h2>Arquitetura e segurança no centro, operação de ponta a ponta.</h2>
+          <p class="sub">Partimos do que você já tem e buscamos as melhorias de maior impacto: decisões de desenho que duram, segurança integrada e uma operação cada vez mais eficiente.</p>
+        </div>
       </div>
-    </article>
 
-    <article class="card svc rv" id="cloud">
-      <div class="ic">☁️</div>
-      <div>
-        <h2>Cloud, Governança e FinOps</h2>
-        <p><b>Resultado:</b> uma cloud organizada, segura e eficiente, com arquitetura pensada para crescer sem que a conta cresça na mesma proporção.</p>
-        <ul class="checks">
-          <li>Arquitetura e implantação na AWS, GCP e Azure</li>
-          <li>Governança: IAM, tagueamento padronizado, organização de contas e backups automatizados</li>
-          <li>Conformidade com LGPD, ISO 27001 e PCI-DSS</li>
-          <li>FinOps: análise de consumo, rightsizing e desligamento automático de ambientes de teste</li>
-          <li>Planejamento e execução de migrações para a nuvem e entre clouds (multicloud)</li>
-          <li>Federação de identidade e acesso entre as clouds</li>
-          <li>Redes e conectividade: VPC, VPN e peering</li>
-        </ul>
-        <p class="for"><b>Ideal para</b> quem quer crescer na nuvem com governança, eficiência de custo e preparo para auditorias.</p>
-        <div class="tags"><span class="tag">AWS</span><span class="tag">GCP</span><span class="tag">Azure</span><span class="tag">IAM</span><span class="tag">FinOps</span></div>
+      <div class="svcgrid">
+        <article class="card svc fr-infra rv" id="arquitetura">
+          <span class="anchor" id="seguranca"></span>
+          <div class="ic">🏛️</div>
+          <h3>Arquitetura e Segurança</h3>
+          <p><b>Resultado:</b> plataformas desenhadas para durar e protegidas desde o início: escaláveis, resilientes e prontas para auditorias.</p>
+          <ul class="checks">
+            <li>Arquitetura cloud-native na AWS e GCP (ECS, CloudFront, WAF, ALB/NLB, EKS/GKE), com microsserviços e arquitetura orientada a eventos</li>
+            <li>Desenho de ambientes, isolamento, rastreabilidade e estratégias de deploy, com decisões técnicas documentadas</li>
+            <li>Segurança em cloud: IAM com acesso mínimo, segregação de ambientes, organização de contas e backups</li>
+            <li>Conformidade com LGPD, ISO 27001 e PCI-DSS, e segurança integrada às esteiras de entrega</li>
+            <li>Hardening de servidores e monitoramento defensivo com Splunk e Datadog</li>
+            <li>Apoio a aplicações com dados e IA, usando serviços nativos da AWS</li>
+          </ul>
+          <p class="for"><b>Ideal para</b> quem vai lançar um produto, modernizar uma plataforma, elevar a maturidade de segurança ou quer uma segunda opinião técnica.</p>
+          <div class="tags"><span class="tag">AWS</span><span class="tag">GCP</span><span class="tag">IAM</span><span class="tag">LGPD</span><span class="tag">ISO 27001</span><span class="tag">PCI-DSS</span></div>
+        </article>
+
+        <article class="card svc fr-infra rv" id="kubernetes">
+          <span class="anchor" id="cicd"></span>
+          <div class="ic">⎈</div>
+          <h3>Kubernetes, CI/CD e Infraestrutura como Código</h3>
+          <p><b>Resultado:</b> aplicações que escalam e se recuperam sozinhas, com entregas frequentes, seguras e repetíveis.</p>
+          <ul class="checks">
+            <li>Migração de aplicações legadas para containers</li>
+            <li>Clusters gerenciados (EKS e GKE) provisionados como código, com deploy via Helm</li>
+            <li>Pipelines de integração e entrega contínuas para vários serviços e ambientes (GitLab CI e GitHub Actions)</li>
+            <li>GitOps, validações automatizadas e rollback controlado</li>
+            <li>Infraestrutura versionada com Terraform e automação com Ansible e Shell Script</li>
+            <li>Segurança e observabilidade dentro do cluster</li>
+          </ul>
+          <p class="for"><b>Ideal para</b> quem quer modernizar aplicações, entregar mais rápido e tornar a operação independente de pessoas-chave.</p>
+          <div class="tags"><span class="tag">Kubernetes</span><span class="tag">Helm</span><span class="tag">Terraform</span><span class="tag">GitLab CI</span><span class="tag">GitHub Actions</span></div>
+        </article>
+
+        <article class="card svc fr-infra rv" id="sre">
+          <span class="anchor" id="linux"></span>
+          <div class="ic">📡</div>
+          <h3>SRE e Confiabilidade</h3>
+          <p><b>Resultado:</b> um ambiente que você acompanha com clareza e evolui com confiança: mais disponibilidade e uma operação cada vez mais previsível.</p>
+          <ul class="checks">
+            <li>Observabilidade de ponta a ponta: métricas, logs e alertas úteis</li>
+            <li>SLIs e SLOs definidos junto com o negócio</li>
+            <li>Resposta a incidentes e aprendizado que vira melhoria contínua</li>
+            <li>Desenho de alta disponibilidade e arquitetura resiliente</li>
+            <li>Base de servidores e dados: Linux (Red Hat, Ubuntu e CentOS), redes, firewalls e PostgreSQL</li>
+          </ul>
+          <p class="for"><b>Ideal para</b> quem quer mais visibilidade e previsibilidade na operação, ou mantém servidores próprios ou híbridos.</p>
+          <div class="tags"><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">Datadog</span><span class="tag">Zabbix</span><span class="tag">Linux</span></div>
+        </article>
+
+        <article class="card svc fr-infra rv" id="cloud">
+          <div class="ic">☁️</div>
+          <h3>Cloud, Governança e FinOps</h3>
+          <p><b>Resultado:</b> uma cloud organizada, segura e eficiente, que cresce sem que a conta cresça na mesma proporção.</p>
+          <ul class="checks">
+            <li>Arquitetura e implantação na AWS, GCP e Azure</li>
+            <li>Governança: IAM, tagueamento padronizado, organização de contas e backups automatizados</li>
+            <li>FinOps: análise de consumo, rightsizing e desligamento automático de ambientes de teste</li>
+            <li>Planejamento e execução de migrações para a nuvem e entre clouds (multicloud)</li>
+            <li>Federação de identidade e acesso entre as clouds</li>
+            <li>Redes e conectividade: VPC, VPN e peering</li>
+          </ul>
+          <p class="for"><b>Ideal para</b> quem quer crescer na nuvem com governança, eficiência de custo e preparo para auditorias.</p>
+          <div class="tags"><span class="tag">AWS</span><span class="tag">GCP</span><span class="tag">Azure</span><span class="tag">FinOps</span></div>
+        </article>
       </div>
-    </article>
-
-    <article class="card svc rv" id="kubernetes">
-      <div class="ic">⎈</div>
-      <div>
-        <h2>Kubernetes e Containers</h2>
-        <p><b>Resultado:</b> aplicações que escalam e se recuperam sozinhas, com modernização gradual e sem parar o negócio.</p>
-        <ul class="checks">
-          <li>Migração de aplicações legadas para containers</li>
-          <li>Clusters gerenciados (EKS e GKE) provisionados como código</li>
-          <li>Empacotamento e deploy com Helm</li>
-          <li>Segurança e observabilidade dentro do cluster</li>
-        </ul>
-        <p class="for"><b>Ideal para</b> quem quer modernizar aplicações e tornar a operação independente de pessoas-chave.</p>
-        <div class="tags"><span class="tag">Kubernetes</span><span class="tag">EKS</span><span class="tag">GKE</span><span class="tag">Helm</span><span class="tag">Docker</span></div>
-      </div>
-    </article>
-
-    <article class="card svc rv" id="cicd">
-      <div class="ic">🚀</div>
-      <div>
-        <h2>CI/CD e Infraestrutura como Código</h2>
-        <p><b>Resultado:</b> entregas frequentes, seguras e repetíveis, com o ambiente descrito em código, versionado e auditável.</p>
-        <ul class="checks">
-          <li>Pipelines de integração e entrega contínuas para vários serviços e ambientes</li>
-          <li>GitOps, validações automatizadas e rollback controlado</li>
-          <li>Infraestrutura versionada com Terraform</li>
-          <li>Automação com Ansible e Shell Script</li>
-        </ul>
-        <p class="for"><b>Ideal para</b> quem quer entregar mais rápido, com mais confiança e menos trabalho manual.</p>
-        <div class="tags"><span class="tag">GitLab CI</span><span class="tag">GitHub Actions</span><span class="tag">Terraform</span><span class="tag">Ansible</span></div>
-      </div>
-    </article>
-
-    <article class="card svc rv" id="linux">
-      <div class="ic">🛡️</div>
-      <div>
-        <h2>Linux, Redes e Bancos de Dados</h2>
-        <p><b>Resultado:</b> uma base sólida, bem administrada e protegida, pronta para sustentar o que vem pela frente.</p>
-        <ul class="checks">
-          <li>Administração de servidores Red Hat, Ubuntu e CentOS</li>
-          <li>Padronização e automação de servidores</li>
-          <li>Redes, firewalls e conectividade entre ambientes</li>
-          <li>Administração de bancos PostgreSQL</li>
-        </ul>
-        <p class="for"><b>Ideal para</b> quem mantém servidores próprios ou híbridos e quer mais segurança e padronização.</p>
-        <div class="tags"><span class="tag">Linux</span><span class="tag">Red Hat</span><span class="tag">PostgreSQL</span><span class="tag">LPI</span></div>
-      </div>
-    </article>
-  </div>
-
-  <div class="wrap" style="padding-top:60px">
-    <p class="kicker rv">Frente 2 · Desenvolvimento fullstack</p>
-  </div>
-
-  <div class="wrap stack" style="padding-top:24px">
-    <article class="card svc rv" id="fullstack">
-      <div class="ic">🌐</div>
-      <div>
-        <h2>Desenvolvimento Web e Front-end</h2>
-        <p><b>Resultado:</b> aplicações web rápidas, acessíveis e bem estruturadas, que o seu time consegue manter e evoluir.</p>
-        <ul class="checks">
-          <li>Aplicações com React, Next.js, TypeScript e JavaScript, com HTML e CSS responsivos</li>
-          <li>Acessibilidade e SEO desde a semântica do HTML</li>
-          <li>Integração com APIs REST e refatoração de código existente</li>
-          <li>Arquitetura de front-end: Clean Architecture e microfrontends</li>
-          <li>Entrega contínua com GitHub Actions e Azure DevOps, com a infraestrutura da frente de DevOps</li>
-        </ul>
-        <p class="for"><b>Ideal para</b> quem vai lançar um produto, refazer um site ou aplicação, ou precisa de reforço em front-end.</p>
-        <div class="tags"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Acessibilidade</span><span class="tag">SEO</span></div>
-      </div>
-    </article>
-
-    <article class="card svc rv" id="portais">
-      <div class="ic">⚙️</div>
-      <div>
-        <h2>Portais, Automação e Plataformas Microsoft</h2>
-        <p><b>Resultado:</b> processos e informações centralizados, com menos trabalho manual e mais tempo para o que importa.</p>
-        <ul class="checks">
-          <li>Portais corporativos com React e Python, integrados a serviços Microsoft</li>
-          <li>SharePoint Online (PnP PowerShell) e Power Platform</li>
-          <li>Automações em Python e PowerShell: extração e cruzamento de dados, rotinas agendadas e relatórios</li>
-          <li>Extensões para Chrome e web scraping para tarefas repetitivas</li>
-          <li>Documentação dos processos para garantir continuidade</li>
-        </ul>
-        <p class="for"><b>Ideal para</b> quem quer eliminar tarefas manuais e organizar informações e rotinas da empresa.</p>
-        <div class="tags"><span class="tag">Python</span><span class="tag">PowerShell</span><span class="tag">SharePoint</span><span class="tag">Power Platform</span><span class="tag">Azure</span></div>
-      </div>
-    </article>
-
-    <article class="card svc rv" id="mobile">
-      <div class="ic">📱</div>
-      <div>
-        <h2>Mobile, Interfaces e IA Aplicada</h2>
-        <p><b>Resultado:</b> experiências digitais bem desenhadas, em qualquer tela, com IA usada onde ela realmente ajuda.</p>
-        <ul class="checks">
-          <li>Aplicativos com React Native e Flutter</li>
-          <li>Design de interfaces e protótipos no Figma, com foco em usabilidade (UI/UX)</li>
-          <li>Soluções com IA nos serviços do Azure e no GitHub Copilot</li>
-          <li>Capacitação do time: treinamentos de React e de IA no desenvolvimento</li>
-        </ul>
-        <p class="for"><b>Ideal para</b> quem quer um app, um protótipo validado ou apoio para adotar IA no desenvolvimento.</p>
-        <div class="tags"><span class="tag">React Native</span><span class="tag">Flutter</span><span class="tag">Figma</span><span class="tag">Azure AI</span></div>
-      </div>
-    </article>
-  </div>
+      <div class="fcta rv"><a class="btn primary" href="/contato/?frente=infra">Falar com a Gromit →</a></div>
+    </div>
+  </section>
 
   <section>
     <div class="wrap">
@@ -203,7 +180,7 @@
           <h2>Quer evoluir o seu ambiente ou o seu produto?</h2>
           <p class="sub" style="margin-bottom:0">Conte o cenário. Em uma conversa curta apontamos as melhorias de maior impacto, em infraestrutura ou em desenvolvimento.</p>
         </div>
-        <div><a class="btn primary" href="/contato/">Agendar uma conversa →</a></div>
+        <div><a class="btn primary" href="/contato/">Falar com a Gromit →</a></div>
       </div>
     </div>
   </section>

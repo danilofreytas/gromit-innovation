@@ -1,115 +1,160 @@
-<!--title: Gromit Innovation | Especialistas em DevOps, SRE e Fullstack-->
-<!--desc: Especialistas em DevOps, infraestrutura, SRE e desenvolvimento fullstack, com certificações AWS, Microsoft e GitHub: cloud, Kubernetes, automação, observabilidade, FinOps, web, mobile e portais.-->
-  <div class="wrap hero">
-    <div>
-      <span class="badge"><span class="dot"></span>Infraestrutura · SRE · DevOps · Cloud · Fullstack</span>
-      <h1><span class="grad">Especialistas</span> em infraestrutura e software,<span class="h1-sub">com <span class="grad">certificações</span> AWS, Microsoft e GitHub.</span></h1>
-      <p class="lead">A Gromit une duas frentes: DevOps, infraestrutura e SRE, e desenvolvimento fullstack. Desenhamos, protegemos e operamos ambientes na AWS, GCP e Azure, e construímos as aplicações web e mobile que rodam sobre eles, com a experiência de dois sócios que executam o que vendem.</p>
-      <div class="btns">
-        <a class="btn primary" href="/contato/">Agendar uma conversa →</a>
-        <a class="btn" href="/servicos/">Ver como ajudamos</a>
+<!--title: Gromit Innovation | Infraestrutura, SRE e Desenvolvimento por dois sócios-->
+<!--desc: Consultoria de dois sócios em duas frentes: DevOps, infraestrutura e SRE (Danilo Freitas dos Reis) e desenvolvimento web, mobile e produto (Priscilla Correa). Certificações AWS, Microsoft e GitHub.-->
+  <div class="wrap hero top">
+    <span class="badge"><span class="dot"></span>Infraestrutura · SRE · DevOps · Cloud · Fullstack</span>
+    <h1><span class="grad">Especialistas</span> em infraestrutura e software,<span class="h1-sub">com <span class="grad">certificações</span> AWS, Microsoft e GitHub.</span></h1>
+    <p class="lead">Desenhamos, protegemos e operamos ambientes na AWS, GCP e Azure e construímos as aplicações web e mobile que rodam sobre eles, com quem executa o que vende.</p>
+    <div class="btns">
+      <a class="btn primary" href="/contato/">Falar com a Gromit →</a>
+      <a class="btn" href="/servicos/">Ver como ajudamos</a>
+    </div>
+  </div>
+
+  <div class="wrap duo">
+    <div class="duo-item">
+      <span class="seal infra">Infra · Danilo</span>
+      <div class="term" aria-hidden="true">
+        <div class="bar"><span></span><span></span><span></span><em>gromit@prod ~ </em></div>
+        <pre id="term"></pre>
       </div>
     </div>
-    <div class="term" aria-hidden="true">
-      <div class="bar"><span></span><span></span><span></span><em>gromit@prod ~ </em></div>
-      <pre id="term"></pre>
+    <div class="duo-item">
+      <span class="seal dev">Produto · Priscilla</span>
+      <div class="uic" id="ui" aria-hidden="true">
+        <div class="bar"><span></span><span></span><span></span><em>gromit@ui ~ Contato.tsx</em></div>
+        <div class="uibody">
+          <div data-s><b class="u-title">Fale com a gente</b></div>
+          <div data-s class="u-sk"><i style="width:62%"></i><i style="width:24%"></i></div>
+          <div data-s><span class="u-label">Seu nome</span><div class="u-input"><span id="uty"></span><span class="cursor"></span></div></div>
+          <div data-s><span class="u-label">Do que você precisa?</span><div class="u-chips"><span>Infra</span><span class="sel">Desenvolvimento</span><span>As duas</span></div></div>
+          <div data-s class="u-btn">Enviar</div>
+          <div data-s class="u-ok">✔ responsivo · acessível · pronto para produção</div>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="marquee" aria-hidden="true"><div class="track" id="track"></div></div>
 
-  <section>
+  <section id="frentes">
     <div class="wrap">
       <p class="kicker rv">Duas frentes</p>
       <h2 class="rv">Da infraestrutura ao produto, com o mesmo time.</h2>
       <p class="sub rv">Quem constrói a aplicação e quem opera a infraestrutura trabalham juntos desde o início. Você pode contratar uma frente ou as duas.</p>
       <div class="bento">
-        <a class="card hl s3 rv" href="/servicos/#arquitetura">
-          <div class="ic">⎈</div>
+        <div class="card fr fr-infra s3 rv">
+          <div class="frhead">
+            <span class="avatar sm infra" aria-hidden="true">DR</span>
+            <div><p class="who">Danilo Freitas dos Reis</p><p class="frole">Lidera · Infra, DevOps e SRE</p></div>
+          </div>
           <h3>DevOps, infraestrutura e SRE</h3>
-          <p>Arquitetura cloud-native, segurança e conformidade, Kubernetes, CI/CD, observabilidade e FinOps na AWS, GCP e Azure. Liderada pelo Danilo, com mais de 16 anos de produção.</p>
-          <div class="tags"><span class="tag">AWS</span><span class="tag">GCP</span><span class="tag">Azure</span><span class="tag">Kubernetes</span><span class="tag">Terraform</span></div>
-        </a>
-        <a class="card hl s3 rv" href="/servicos/#fullstack">
-          <div class="ic">💻</div>
-          <h3>Desenvolvimento fullstack</h3>
-          <p>Aplicações web e mobile, portais corporativos e automação, com foco em acessibilidade, desempenho e SEO. Liderada pela Priscilla, com mais de 4 anos de experiência.</p>
-          <div class="tags"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Python</span><span class="tag">React Native</span></div>
-        </a>
+          <p>Arquitetura cloud-native, segurança e conformidade, Kubernetes, CI/CD, observabilidade e FinOps na AWS, GCP e Azure, com mais de 16 anos de produção.</p>
+          <ul class="mini">
+            <li><a href="/servicos/#arquitetura"><b>Arquitetura e segurança</b><span>Plataformas cloud-native, IAM e conformidade (LGPD, ISO 27001, PCI-DSS).</span></a></li>
+            <li><a href="/servicos/#kubernetes"><b>Kubernetes, CI/CD e IaC</b><span>Containers, pipelines seguros, GitOps e Terraform.</span></a></li>
+            <li><a href="/servicos/#sre"><b>SRE e observabilidade</b><span>Métricas, SLOs e alertas relevantes para decidir com clareza.</span></a></li>
+          </ul>
+          <a class="go" href="/servicos/#infra">Ver serviços de infraestrutura →</a>
+        </div>
+        <div class="card fr fr-dev s3 rv">
+          <div class="frhead">
+            <span class="avatar sm dev" aria-hidden="true">PC</span>
+            <div><p class="who">Priscilla Correa</p><p class="frole">Lidera · Desenvolvimento e produto</p></div>
+          </div>
+          <h3>Desenvolvimento web, mobile e produto</h3>
+          <p>Aplicações web e mobile, portais corporativos e automação, com foco em acessibilidade, desempenho e SEO, com mais de 4 anos de experiência.</p>
+          <ul class="mini">
+            <li><a href="/servicos/#fullstack"><b>Web e front-end</b><span>React, Next.js e TypeScript, com acessibilidade, SEO e integração com APIs REST.</span></a></li>
+            <li><a href="/servicos/#portais"><b>Portais e automação</b><span>Portais corporativos, SharePoint, Power Platform e automações em Python e PowerShell.</span></a></li>
+            <li><a href="/servicos/#mobile"><b>Mobile, interfaces e IA</b><span>Apps com React Native e Flutter, interfaces no Figma e IA aplicada.</span></a></li>
+          </ul>
+          <a class="go" href="/servicos/#dev">Ver serviços de desenvolvimento →</a>
+        </div>
       </div>
+
+      <p class="kicker rv" style="margin-top:64px">Do código à produção</p>
+      <h3 class="rv" style="font-size:1.5rem;letter-spacing:-.02em;max-width:34ch">Cada etapa tem quem responde por ela, e as duas frentes conversam o tempo todo.</h3>
+      <p class="sub rv" style="margin-top:12px">Role a página ou clique nas etapas.</p>
+      <div class="proto" id="proto" style="--n:8">
+        <div class="proto-stage">
+          <ol class="proto-steps" aria-label="Etapas do código à produção">
+          <li class="front-both"><button type="button" data-i="0" aria-label="Etapa 1: Ideia"><span class="n">1</span><span>Ideia<small>Danilo + Priscilla</small></span></button></li>
+          <li class="front-dev"><button type="button" data-i="1" aria-label="Etapa 2: Design"><span class="n">2</span><span>Design<small>Priscilla</small></span></button></li>
+          <li class="front-dev"><button type="button" data-i="2" aria-label="Etapa 3: Código"><span class="n">3</span><span>Código<small>Priscilla</small></span></button></li>
+          <li class="front-dev"><button type="button" data-i="3" aria-label="Etapa 4: API e testes"><span class="n">4</span><span>API e testes<small>Priscilla</small></span></button></li>
+          <li class="front-both"><button type="button" data-i="4" aria-label="Etapa 5: Pipeline"><span class="n">5</span><span>Pipeline<small>Danilo + Priscilla</small></span></button></li>
+          <li class="front-infra"><button type="button" data-i="5" aria-label="Etapa 6: Cloud"><span class="n">6</span><span>Cloud<small>Danilo</small></span></button></li>
+          <li class="front-infra"><button type="button" data-i="6" aria-label="Etapa 7: Observabilidade"><span class="n">7</span><span>Observabilidade<small>Danilo</small></span></button></li>
+          <li class="front-both"><button type="button" data-i="7" aria-label="Etapa 8: No ar"><span class="n">8</span><span>No ar<small>Danilo + Priscilla</small></span></button></li>
+          </ol>
+          <div class="proto-frame front-both" id="pframe">
+            <div class="bar"><span></span><span></span><span></span><em id="purl">seu-produto</em><b class="cnt" id="pcnt" aria-live="polite">1/8</b></div>
+            <div class="proto-prog" aria-hidden="true"><i id="pbar"></i></div>
+          <div class="pp" data-f="both" data-url="seu-produto / planejamento">
+            <span class="who">Danilo + Priscilla</span>
+            <h4>Entender antes de construir</h4>
+            <p>Conversa com quem vai usar o produto, definição do escopo e um roadmap curto. Infraestrutura e produto entram juntos, para as decisões não virarem retrabalho.</p>
+            <div class="viz" aria-hidden="true"><div class="row"><span class="tag">Escopo</span><span class="tag">Roadmap</span><span class="tag">Requisitos</span></div><div class="sk" style="width:80%"></div><div class="sk" style="width:55%"></div></div>
+          </div>
+          <div class="pp" data-f="dev" data-url="seu-produto / design">
+            <span class="who">Priscilla</span>
+            <h4>Interface desenhada e validada</h4>
+            <p>Telas e protótipo navegável no Figma, para validar a ideia antes da primeira linha de código.</p>
+            <div class="viz" aria-hidden="true"><div class="row"><span class="tag">Figma</span><span class="tag">Protótipo</span></div><div class="sk" style="width:40%"></div><div class="sk" style="width:90%;height:46px"></div><div class="row"><div class="sk" style="width:30%;height:28px"></div><div class="sk" style="width:20%;height:28px"></div></div></div>
+          </div>
+          <div class="pp" data-f="dev" data-url="seu-produto / Hero.tsx">
+            <span class="who">Priscilla</span>
+            <h4>Componentes reutilizáveis e acessíveis</h4>
+            <p>Front-end em React, Next.js e TypeScript, responsivo, com foco em acessibilidade, desempenho e SEO.</p>
+            <div class="viz" aria-hidden="true"><div class="dim">// Hero.tsx</div><div>export function <span class="ok">Hero</span>() {</div><div>&nbsp;&nbsp;return &lt;<span class="ok">Section</span> aria-labelledby="titulo" /&gt;</div><div>}</div></div>
+          </div>
+          <div class="pp" data-f="dev" data-url="seu-produto / api">
+            <span class="who">Priscilla</span>
+            <h4>Integração com APIs e código que evolui</h4>
+            <p>Integração com APIs REST e refatoração com Clean Architecture, para o seu time conseguir manter e evoluir o produto.</p>
+            <div class="viz" aria-hidden="true"><div class="row"><span class="tag">GET</span> /api/recursos</div><div class="row"><span class="tag">POST</span> /api/recursos</div><div class="ok">✔ testes passando</div></div>
+          </div>
+          <div class="pp" data-f="both" data-url="seu-produto / pipeline">
+            <span class="who">Danilo + Priscilla</span>
+            <h4>Da versão ao deploy, sem trabalho manual</h4>
+            <p>Esteira de CI/CD com GitOps e infraestrutura como código (Terraform). Cada mudança é testada e entregue de forma repetível.</p>
+            <div class="viz" aria-hidden="true"><div class="row"><span class="tag">build</span>→<span class="tag">testes</span>→<span class="tag">deploy</span></div><div class="ok">✔ tudo versionado como código</div></div>
+          </div>
+          <div class="pp" data-f="infra" data-url="seu-produto / cloud">
+            <span class="who">Danilo</span>
+            <h4>Ambiente seguro e pronto para escalar</h4>
+            <p>Arquitetura cloud-native na AWS, GCP ou Azure, com Kubernetes, IAM e conformidade (LGPD, ISO 27001, PCI-DSS).</p>
+            <div class="viz" aria-hidden="true"><div><span class="dim">$</span> kubectl get pods -n prod</div><div>api&nbsp;&nbsp;&nbsp;<span class="ok">Running</span></div><div>web&nbsp;&nbsp;&nbsp;<span class="ok">Running</span></div></div>
+          </div>
+          <div class="pp" data-f="infra" data-url="seu-produto / observabilidade">
+            <span class="who">Danilo</span>
+            <h4>Enxergar antes do cliente</h4>
+            <p>Métricas, logs e alertas relevantes, com SLIs e SLOs, para decidir com clareza e responder a incidentes.</p>
+            <div class="viz" aria-hidden="true"><div class="row"><span class="tag">Métricas</span><span class="tag">Logs</span><span class="tag">Alertas</span></div><div class="ok">✔ SLOs monitorados</div></div>
+          </div>
+          <div class="pp" data-f="both" data-url="seu-produto / produção">
+            <span class="who">Danilo + Priscilla</span>
+            <h4>Em produção e acompanhado</h4>
+            <p>Publicação, sustentação e SRE contínuo, ou repasse do ambiente pronto com o seu time preparado para operar.</p>
+            <div class="viz" aria-hidden="true"><div class="ok">✔ aplicação no ar</div><div class="ok">✔ ambiente monitorado</div><div class="ok">✔ time preparado</div></div>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="flow-key rv"><span class="seal infra">Infra · Danilo</span><span class="seal dev">Produto · Priscilla</span><span class="seal both">Juntos</span></div>
+      <p class="proto-note">Exemplo ilustrativo do nosso processo, não é um projeto real de cliente.</p>
     </div>
   </section>
 
-  <section>
+  <section id="contratar">
     <div class="wrap">
-      <p class="kicker rv">Frente 1 · DevOps, infraestrutura e SRE</p>
-      <h2 class="rv">Arquitetura e segurança no centro, operação de ponta a ponta.</h2>
-      <p class="sub rv">Partimos do que você já tem e buscamos as melhorias de maior impacto: decisões de desenho que duram, segurança integrada e uma operação cada vez mais eficiente.</p>
-      <div class="bento">
-        <a class="card hl s4 rv" href="/servicos/#arquitetura">
-          <div class="ic">🏛️</div>
-          <h3>Arquitetura pensada para durar e evoluir.</h3>
-          <p>Desenho de plataformas cloud-native, microsserviços e arquitetura orientada a eventos, com decisões técnicas claras desde o início. Escalabilidade, resiliência e custo balanceados antes de a primeira linha ir para produção.</p>
-          <div class="tags"><span class="tag">AWS</span><span class="tag">GCP</span><span class="tag">Microsserviços</span><span class="tag">Event-driven</span></div>
-        </a>
-        <a class="card hl s2 rv" href="/servicos/#seguranca">
-          <div class="ic">🔐</div>
-          <h3>Segurança integrada, não colada depois.</h3>
-          <p>IAM, conformidade e defesa no desenho e no dia a dia.</p>
-          <div class="tags"><span class="tag">LGPD</span><span class="tag">ISO 27001</span><span class="tag">PCI-DSS</span></div>
-        </a>
-        <a class="card s2 rv" href="/servicos/#sre">
-          <div class="ic">📡</div>
-          <h3>Enxergue tudo o que acontece.</h3>
-          <p>Observabilidade, SLOs e alertas relevantes para decidir com clareza.</p>
-          <div class="tags"><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">Datadog</span></div>
-        </a>
-        <a class="card s2 rv" href="/servicos/#cicd">
-          <div class="ic">🚀</div>
-          <h3>Entregue com velocidade e confiança.</h3>
-          <p>Pipelines seguros, GitOps e rollback controlado.</p>
-          <div class="tags"><span class="tag">GitLab CI</span><span class="tag">GitHub Actions</span><span class="tag">Terraform</span></div>
-        </a>
-        <a class="card s2 rv" href="/servicos/#kubernetes">
-          <div class="ic">⎈</div>
-          <h3>Modernize para escalar.</h3>
-          <p>Containers e Kubernetes (EKS/GKE), no ritmo do seu negócio.</p>
-          <div class="tags"><span class="tag">Kubernetes</span><span class="tag">Helm</span><span class="tag">Docker</span></div>
-        </a>
-        <a class="card s6 rv" href="/servicos/#cloud">
-          <div class="ic">📈</div>
-          <h3>Faça a nuvem render mais.</h3>
-          <p>FinOps na prática: análise de consumo, rightsizing e automações que direcionam o investimento para onde gera valor.</p>
-          <div class="tags"><span class="tag">FinOps</span><span class="tag">AWS</span><span class="tag">GCP</span><span class="tag">Azure</span></div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <p class="kicker rv">Frente 2 · Desenvolvimento fullstack</p>
-      <h2 class="rv">Software que o seu time consegue evoluir.</h2>
-      <p class="sub rv">Interfaces rápidas, acessíveis e bem estruturadas, ligadas a APIs e automações que eliminam trabalho manual.</p>
-      <div class="bento">
-        <a class="card s2 rv" href="/servicos/#fullstack">
-          <div class="ic">🌐</div>
-          <h3>Web e front-end.</h3>
-          <p>React, Next.js e TypeScript, com acessibilidade, SEO e integração com APIs REST.</p>
-          <div class="tags"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">TypeScript</span></div>
-        </a>
-        <a class="card s2 rv" href="/servicos/#portais">
-          <div class="ic">⚙️</div>
-          <h3>Portais e automação.</h3>
-          <p>Portais corporativos, SharePoint e Power Platform, e automações em Python e PowerShell.</p>
-          <div class="tags"><span class="tag">Python</span><span class="tag">SharePoint</span><span class="tag">Power Platform</span></div>
-        </a>
-        <a class="card s2 rv" href="/servicos/#mobile">
-          <div class="ic">📱</div>
-          <h3>Mobile, interfaces e IA.</h3>
-          <p>Apps com React Native e Flutter, design de interfaces no Figma e IA aplicada.</p>
-          <div class="tags"><span class="tag">React Native</span><span class="tag">Flutter</span><span class="tag">Figma</span></div>
-        </a>
+      <p class="kicker rv">Como contratar</p>
+      <h2 class="rv">Três formas de trabalhar com a gente.</h2>
+      <p class="sub rv">Cada serviço pode ser contratado isolado ou combinado, conforme o momento da sua empresa.</p>
+      <div class="feat" style="margin-top:0">
+        <div class="card rv"><h3>Projeto com escopo fechado</h3><p>Para objetivos claros, como desenhar uma arquitetura, elevar a segurança, evoluir para Kubernetes, estruturar a esteira de deploy, construir uma aplicação ou aumentar a eficiência de custo. Escopo, prazo e entregas combinados desde o início.</p></div>
+        <div class="card rv"><h3>Consultoria recorrente</h3><p>Um especialista, de infraestrutura ou de desenvolvimento, ao lado do seu time por uma carga horária mensal, para arquitetura, revisão e evolução contínua.</p></div>
+        <div class="card rv"><h3>Sustentação e SRE contínuo</h3><p>Acompanhamento do ambiente em produção, com observabilidade, resposta a incidentes e melhoria constante da confiabilidade.</p></div>
       </div>
     </div>
   </section>
@@ -132,52 +177,15 @@
       <div>
         <p class="kicker rv">Por que a Gromit</p>
         <h2 class="rv">Quem vende é quem executa.</h2>
-        <p class="sub rv">Você conversa direto com os sócios que projetam e executam: o Danilo, com prática de produção em infraestrutura e SRE (bancário regulado, meios de pagamento e logística) e formação em arquitetura e cybersecurity, e a Priscilla, desenvolvedora fullstack com anos de experiência em projetos corporativos. Sem camadas de gerência no meio e sem promessa que a prática não sustenta.</p>
+        <p class="sub rv" style="margin-bottom:24px">Você conversa direto com os sócios que projetam e executam. O Danilo traz mais de 16 anos de produção em infraestrutura e SRE (bancário regulado, meios de pagamento e logística) e formação em arquitetura e cybersecurity. A Priscilla traz mais de 4 anos de desenvolvimento fullstack em projetos corporativos e do setor de saúde, com ênfase em front-end e pós-graduação em Front-End Engineering. Sem camadas de gerência no meio e sem promessa que a prática não sustenta.</p>
         <div class="btns rv">
           <a class="btn" href="/quem-somos/">Conheça os sócios →</a>
-          <a class="btn" href="/quem-somos/daniloreis/">Trajetória do Danilo →</a>
         </div>
       </div>
       <div class="stats">
-        <div class="stat rv"><b class="grad">16+</b><span>anos em infraestrutura, SRE e DevOps</span></div>
-        <div class="stat rv"><b class="grad">3</b><span>clouds em produção: AWS, GCP e Azure</span></div>
-        <div class="stat rv"><b class="grad">2</b><span>frentes de atuação: infraestrutura e SRE, e desenvolvimento fullstack</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <p class="kicker rv">Produtos próprios</p>
-      <h2 class="rv">Operamos o que construímos.</h2>
-      <p class="sub rv">Mantemos aplicações próprias em produção, do código à infraestrutura, com cloud, Kubernetes, CI/CD e observabilidade de verdade. É a mesma disciplina que levamos aos clientes.</p>
-      <div class="products">
-        <a class="card prod rv" href="/produtos/budget-bunny/">
-          <div class="art bb">
-            <div class="balance">saldo do mês<b>R$ 4.280</b></div>
-            <div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          </div>
-          <div class="body">
-            <p class="st">em produção</p>
-            <h3>Budget Bunny</h3>
-            <p>Finanças pessoais com receitas, despesas, investimentos, assinaturas e dashboard mensal.</p>
-            <span class="go">Saiba mais →</span>
-          </div>
-        </a>
-        <a class="card prod rv" href="/produtos/ursolandia/">
-          <div class="art ur">
-            <div class="rg">
-              <div class="ph">🧸</div>
-              <dl><dt>NOME</dt><dd>Ursinho</dd><dt>ADOÇÃO</dt><dd>24/12/2023</dd><dt>PELO</dt><dd>Caramelo</dd></dl>
-            </div>
-          </div>
-          <div class="body">
-            <p class="st">uso familiar</p>
-            <h3>Ursolândia</h3>
-            <p>Cadastro de ursinhos com RG e um bot do Telegram que gera a carteirinha a partir de uma foto.</p>
-            <span class="go">Saiba mais →</span>
-          </div>
-        </a>
+        <div class="stat rv"><b class="grad">20+</b><span>anos de experiência somados: 16+ em infraestrutura, SRE e DevOps e 4+ em desenvolvimento</span></div>
+        <div class="stat rv"><b class="grad">11</b><span>certificações e credenciais AWS, Microsoft e GitHub entre os dois sócios</span></div>
+        <div class="stat rv"><b class="grad">2</b><span>frentes de atuação: infraestrutura e SRE, e desenvolvimento e produto</span></div>
       </div>
     </div>
   </section>
@@ -186,11 +194,23 @@
     <div class="wrap">
       <div class="contact one rv">
         <div>
-          <p class="kicker">Vamos conversar</p>
-          <h2>Qual é o próximo passo de evolução do seu ambiente?</h2>
+          <p class="kicker">Próximo passo</p>
+          <h2>Qual é o próximo passo de evolução do seu ambiente ou produto?</h2>
           <p class="sub" style="margin-bottom:0">Conte o seu cenário em poucas linhas. A primeira conversa é para entender os seus objetivos, sem compromisso.</p>
         </div>
         <div><a class="btn primary" href="/contato/">Falar com a Gromit →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="labsec">
+    <div class="wrap">
+      <div class="lab rv">
+        <div>
+          <p class="kicker">Produtos</p>
+          <p>Operamos o que construímos: mantemos aplicações próprias em produção, o Budget Bunny e a Ursolândia, com a mesma disciplina que levamos aos clientes.</p>
+        </div>
+        <a class="btn" href="/produtos/">Ver os produtos →</a>
       </div>
     </div>
   </section>
