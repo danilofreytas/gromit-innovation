@@ -14,7 +14,7 @@ SRC = ROOT / "src"
 PUBLIC = ROOT / "public"   # arquivos estáticos copiados como estão (css, js, logos, CV, CNAME)
 DIST = ROOT / "dist"       # saída do build; não é versionada
 SITE_URL = "https://gromit.com.br"
-VERSION = "18"  # aumente para forçar recarregar CSS/JS no navegador
+VERSION = "33"  # aumente para forçar recarregar CSS/JS no navegador
 
 # arquivo em src/  ->  URL final
 PAGES = {
@@ -38,6 +38,36 @@ PRODUCT_LINKS = {
     "ursolandia": None,
 }
 
+
+import random
+
+def _logo_svg(cls):
+    svg = (PUBLIC / "brand" / "logo-horizontal-reversed.svg").read_text(encoding="utf-8")
+    svg = svg.replace("<svg ", f'<svg class="{cls}" role="img" aria-label="Gromit Innovation" ', 1)
+    # o primeiro traço Azure é o cursor >_ , que pisca na versão animada
+    return svg.replace('fill="#38BDF8"', 'class="lg-cur" fill="#38BDF8"', 1)
+
+
+def _starfield():
+    """Campo de estrelas e arcos de órbita (elementos de apoio do manual da marca)."""
+    rnd = random.Random(7)
+    out = []
+    for cx, cy, r, w, o in ((1560, -10, 400, 10, .07), (90, 860, 330, 8, .05)):
+        out.append(f'<circle class="orb" cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="#FFFFFF" stroke-opacity="{o}" '
+                   f'stroke-width="{w}" stroke-dasharray="{int(r * 4.2)} {int(r * 1.3)}" style="transform-origin:{cx}px {cy}px"/>')
+    stars = []
+    for i in range(58):
+        x, y = rnd.uniform(0, 1440), rnd.uniform(0, 900)
+        r = rnd.choice((.7, 1.0, 1.4, 1.8))
+        accent = i % 17 == 0
+        fill = "#38BDF8" if accent else "#FFFFFF"
+        op = 1 if accent else rnd.choice((.18, .28, .4))
+        stars.append(f'<circle class="st s{i % 5}" cx="{x:.1f}" cy="{y:.1f}" r="{r}" fill="{fill}" fill-opacity="{op}"/>')
+    out.append('<g class="stars">' + "".join(stars) + '</g>')
+    return ('<svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">'
+            + "".join(out) + "</svg>")
+
+
 NAV = [("/servicos/", "Serviços"), ("/quem-somos/", "Quem somos"), ("/produtos/", "Produtos")]
 
 LAYOUT = """<!DOCTYPE html>
@@ -48,7 +78,7 @@ LAYOUT = """<!DOCTYPE html>
   <title>{title}</title>
   <meta name="description" content="{desc}">
   <link rel="canonical" href="{canonical}">
-  <meta name="theme-color" content="#0b0f14">
+  <meta name="theme-color" content="#060C1C">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Gromit Innovation">
@@ -56,19 +86,22 @@ LAYOUT = """<!DOCTYPE html>
   <meta property="og:description" content="{desc}">
   <meta property="og:url" content="{canonical}">
   <meta name="twitter:card" content="summary">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico?v={v}" sizes="48x48">
+  <link rel="icon" href="/favicon.svg?v={v}" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v={v}">
+  <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css?v={v}">
 </head>
 <body>
 
-<div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="bg" aria-hidden="true">{starfield}</div>
 
 <header class="nav">
   <div class="pill">
-    <a class="logo" href="/"><i></i>Gromit Innovation</a>
+    <a class="logo" href="/" aria-label="Gromit Innovation, página inicial">{logo}</a>
     <ul>
 {nav}
     </ul>
@@ -82,7 +115,7 @@ LAYOUT = """<!DOCTYPE html>
 
 <footer>
   <div class="wrap">
-    <span>© <span id="y">2026</span> Gromit Innovation</span>
+    <span class="fbrand">{flogo}<small>© <span id="y">2026</span> Gromit Innovation</small></span>
     <span class="flinks"><a href="/servicos/">Serviços</a><a href="/quem-somos/">Quem somos</a><a href="/produtos/">Produtos</a><a href="/contato/">Contato</a><a href="https://www.linkedin.com/company/gromit-innovation" target="_blank" rel="noopener">LinkedIn</a><a href="/privacidade/">Privacidade</a></span>
     <span class="tm">Logotipos e marcas citados pertencem aos respectivos proprietários e são usados apenas para identificar experiências e certificações.</span>
   </div>
@@ -134,6 +167,7 @@ def main():
         html = LAYOUT.format(
             title=full_title, desc=meta(text, "desc"), canonical=SITE_URL + url,
             nav=nav, content=content.strip(), v=VERSION,
+            logo=_logo_svg("lg"), flogo=_logo_svg("lg lg-foot"), starfield=_starfield(),
         )
         out = DIST / url.strip("/") / "index.html" if url != "/" else DIST / "index.html"
         out.parent.mkdir(parents=True, exist_ok=True)
