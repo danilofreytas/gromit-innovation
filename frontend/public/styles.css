@@ -853,3 +853,13 @@ section[id] { scroll-margin-top: -24px; }
 /* Equipe: título curto, então a cena acompanha a altura do título */
 #equipe .sechead { margin-bottom: 28px; }
 #equipe .sechead .wide-art { max-height: 104px; width: auto; justify-self: end; }
+
+/* ===== Mobile: correções finais (devem ficar depois das regras de desktop) ===== */
+@media (max-width: 900px) {
+  .sechead { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .sechead-text h2 { font-size: clamp(1.7rem, 7vw, 2.2rem); }
+  footer .flinks { flex-wrap: wrap; gap: 8px 18px; }
+  .proto-stage { grid-template-columns: minmax(0, 1fr); height: auto; gap: 14px; }
+  .proto-steps { grid-auto-flow: column; grid-auto-columns: max-content; overflow-x: auto; align-content: start; }
+  .proto-frame { contain: none; min-height: 360px; }
+}
