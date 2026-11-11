@@ -1,9 +1,9 @@
 <!--title: Contato-->
-<!--desc: Fale com a Gromit Innovation sobre SRE, DevOps, Kubernetes, cloud e FinOps. Conte o que quer evoluir e agende uma primeira conversa.-->
+<!--desc: Fale com a Gromit Innovation sobre infraestrutura, DevOps, SRE, cloud, desenvolvimento web ou mobile. Conte o que quer evoluir e receba o retorno de um dos sócios.-->
   <div class="wrap phead">
     <p class="crumb"><a href="/">Início</a> / Contato</p>
-    <h1>Vamos conversar sobre o seu ambiente?</h1>
-    <p class="lead">Conte em poucas linhas o seu cenário e o que você gostaria de evoluir. A primeira conversa é para entender o seu contexto e apontar as melhores oportunidades.</p>
+    <h1>Conte o que você quer evoluir.</h1>
+    <p class="lead">Conte em poucas linhas o seu cenário e do que você precisa. A primeira conversa é para entender o seu contexto e apontar as melhores oportunidades.</p>
   </div>
 
   <div class="wrap">
@@ -12,21 +12,48 @@
         <h2 style="font-size:1.6rem">O que acontece depois</h2>
         <ul class="checks" style="margin-top:20px">
           <li>Lemos a sua mensagem e respondemos em até 2 dias úteis</li>
-          <li>Marcamos uma conversa curta para entender o cenário</li>
+          <li>Conversamos rapidamente para entender o cenário</li>
           <li>Enviamos uma proposta com escopo, prazo e forma de trabalho</li>
         </ul>
-        <p class="sub" style="margin:26px 0 18px">Prefere outro canal?</p>
-        <div class="social">
-          <a class="btn" href="https://www.linkedin.com/in/danilofreitasdosreis/" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a class="btn" href="https://github.com/danilofreytas" target="_blank" rel="noopener">GitHub ↗</a>
+        <p class="sub" style="margin:26px 0 14px">Prefere outro canal?</p>
+        <div class="social" style="margin-bottom:16px">
+          <a class="btn" href="https://www.linkedin.com/company/gromit-innovation" target="_blank" rel="noopener" aria-label="LinkedIn da Gromit Innovation (abre em nova aba)">LinkedIn da Gromit ↗</a>
+        </div>
+        <div class="partners">
+          <div class="partner front-infra">
+            <span class="avatar sm infra" aria-hidden="true">DR</span>
+            <div><span class="pname">Danilo Freitas dos Reis</span><span class="prole">Infra, DevOps e SRE</span></div>
+            <div class="btns">
+              <a class="btn" href="https://www.linkedin.com/in/danilofreitasdosreis/" target="_blank" rel="noopener" aria-label="LinkedIn do Danilo (abre em nova aba)">LinkedIn ↗</a>
+              <a class="btn" href="https://github.com/danilofreytas" target="_blank" rel="noopener" aria-label="GitHub do Danilo (abre em nova aba)">GitHub ↗</a>
+            </div>
+          </div>
+          <div class="partner front-dev">
+            <span class="avatar sm dev" aria-hidden="true">PC</span>
+            <div><span class="pname">Priscilla Correa</span><span class="prole">Desenvolvimento e produto</span></div>
+            <div class="btns">
+              <a class="btn" href="https://www.linkedin.com/in/priscilla-correa" target="_blank" rel="noopener" aria-label="LinkedIn da Priscilla (abre em nova aba)">LinkedIn ↗</a>
+              <a class="btn" href="https://github.com/prissycorrea" target="_blank" rel="noopener" aria-label="GitHub da Priscilla (abre em nova aba)">GitHub ↗</a>
+            </div>
+          </div>
         </div>
       </div>
       <form method="POST" action="https://formspree.io/f/xrppdrla">
         <div class="hp" aria-hidden="true"><label>Não preencha este campo <input name="_gotcha" type="text" tabindex="-1" autocomplete="off"></label></div>
-        <input name="nome" type="text" placeholder="Seu nome" required>
-        <input name="email" type="email" placeholder="Seu e-mail" required>
-        <input name="empresa" type="text" placeholder="Empresa (opcional)">
-        <textarea name="msg" placeholder="O que você gostaria de melhorar ou construir?" required></textarea>
+        <input name="nome" type="text" placeholder="Seu nome" aria-label="Seu nome" autocomplete="name" required>
+        <input name="email" type="email" placeholder="Seu e-mail" aria-label="Seu e-mail" autocomplete="email" required>
+        <input name="empresa" type="text" placeholder="Empresa (opcional)" aria-label="Empresa (opcional)" autocomplete="organization">
+        <div>
+          <label class="fl" for="frente">Do que você precisa? *</label>
+          <select id="frente" name="frente" required>
+            <option value="" disabled selected data-key="">Selecione uma opção</option>
+            <option value="Infraestrutura/DevOps" data-key="infra">Infraestrutura/DevOps</option>
+            <option value="Desenvolvimento web/mobile" data-key="dev">Desenvolvimento web/mobile</option>
+            <option value="As duas coisas" data-key="ambas">As duas coisas</option>
+            <option value="Ainda não sei" data-key="nao-sei">Ainda não sei</option>
+          </select>
+        </div>
+        <textarea name="msg" placeholder="O que você gostaria de melhorar ou construir?" aria-label="O que você gostaria de melhorar ou construir?" required></textarea>
         <p class="consent">Ao enviar, você concorda com o uso dos dados para responder a esta mensagem, conforme a <a href="/privacidade/">Política de Privacidade</a>.</p>
         <button class="btn primary" type="submit" style="justify-content:center">Enviar mensagem →</button>
       </form>

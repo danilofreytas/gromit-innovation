@@ -16,9 +16,16 @@
   // Faixa de tecnologias (somente na home)
   var track = document.getElementById('track');
   if (track) {
-    var stack = ['AWS', 'GCP', 'Azure', 'Kubernetes', 'Terraform', 'Ansible', 'Docker', 'Helm',
-      'GitLab CI', 'GitHub Actions', 'Prometheus', 'Grafana', 'Datadog', 'Linux', 'PostgreSQL', 'Python'];
-    track.innerHTML = stack.concat(stack).map(function (s) { return '<span>' + s + '</span>'; }).join('');
+    var infra = ['AWS', 'GCP', 'Azure', 'Kubernetes', 'Terraform', 'Ansible', 'Docker', 'Helm',
+      'GitLab CI', 'GitHub Actions', 'Prometheus', 'Grafana', 'Datadog', 'Linux', 'PostgreSQL'];
+    var dev = ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Tailwind', 'React Native', 'Flutter', 'Figma',
+      'Python', 'PowerShell', 'SharePoint', 'Power Platform', 'APIs REST', 'GitHub Copilot'];
+    var stack = [];
+    for (var q = 0; q < Math.max(infra.length, dev.length); q++) {
+      if (infra[q]) stack.push('<span>' + infra[q] + '</span>');
+      if (dev[q]) stack.push('<span class="d">' + dev[q] + '</span>');
+    }
+    track.innerHTML = stack.concat(stack).join('');
   }
 
   // Terminal animado (somente na home)
@@ -45,6 +52,91 @@
         setTimeout(next, i % 3 === 1 ? 900 : 450);
       })();
     }
+  }
+
+  // Interface sendo montada (somente na home)
+  var ui = document.getElementById('ui');
+  if (ui) {
+    var steps = ui.querySelectorAll('[data-s]');
+    var ty = document.getElementById('uty'), btn = ui.querySelector('.u-btn');
+    var text = 'Ana Souza';
+    if (reduce) {
+      ty.textContent = text;
+    } else {
+      ui.classList.add('anim');
+      var k = 0;
+      var show = function () {
+        if (k >= steps.length) return;
+        var s = steps[k++];
+        s.classList.add('on');
+        if (s.contains(ty)) {
+          var c = 0;
+          (function type() {
+            ty.textContent = text.slice(0, ++c);
+            if (c < text.length) setTimeout(type, 70); else setTimeout(show, 450);
+          })();
+        } else if (s === btn) {
+          setTimeout(function () { btn.classList.add('press'); setTimeout(function () { btn.classList.remove('press'); }, 180); }, 350);
+          setTimeout(show, 700);
+        } else {
+          setTimeout(show, 500);
+        }
+      };
+      setTimeout(show, 400);
+    }
+  }
+
+  // Protótipo "do código à produção": acompanha a rolagem e aceita clique
+  var proto = document.getElementById('proto');
+  if (proto) {
+    var pans = proto.querySelectorAll('.pp'), btns = proto.querySelectorAll('.proto-steps button');
+    var pframe = document.getElementById('pframe'), pcnt = document.getElementById('pcnt');
+    var pbar = document.getElementById('pbar'), purl = document.getElementById('purl');
+    var total = pans.length, cur = -1;
+    var setStage = function (i) {
+      if (i === cur) return; cur = i;
+      pans.forEach(function (p, k) { p.classList.toggle('on', k === i); });
+      btns.forEach(function (b, k) {
+        b.parentNode.classList.toggle('on', k === i);
+        if (k === i) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
+      });
+      pframe.className = 'proto-frame front-' + pans[i].getAttribute('data-f');
+      pcnt.textContent = (i + 1) + '/' + total;
+      pbar.style.width = ((i + 1) / total * 100) + '%';
+      purl.textContent = pans[i].getAttribute('data-url');
+    };
+    setStage(0);
+    proto.classList.add('js');
+    var stageTop = function () { return proto.getBoundingClientRect().top + window.scrollY; };
+    var onProto = function () {
+      var r = proto.getBoundingClientRect();
+      var span = proto.offsetHeight - window.innerHeight * 0.6;
+      var p = Math.min(Math.max((-r.top + 96) / Math.max(span, 1), 0), 0.9999);
+      setStage(Math.floor(p * total));
+    };
+    window.addEventListener('scroll', onProto, { passive: true });
+    window.addEventListener('resize', onProto);
+    btns.forEach(function (b, k) {
+      b.addEventListener('click', function () {
+        var span = proto.offsetHeight - window.innerHeight * 0.6;
+        var y = stageTop() - 96 + (k + 0.5) / total * span;
+        window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+        setStage(k);
+      });
+    });
+  }
+
+  // Formulário: pré-seleciona a frente vinda de /contato/?frente=infra|dev
+  var sel = document.getElementById('frente');
+  if (sel) {
+    try {
+      var f = new URLSearchParams(window.location.search).get('frente');
+      if (f) {
+        for (var j = 0; j < sel.options.length; j++) {
+          if (sel.options[j].getAttribute('data-key') === f) { sel.selectedIndex = j; break; }
+        }
+      }
+    } catch (e) {}
   }
 
   // Revelar ao rolar

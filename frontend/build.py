@@ -14,7 +14,7 @@ SRC = ROOT / "src"
 PUBLIC = ROOT / "public"   # arquivos estáticos copiados como estão (css, js, logos, CV, CNAME)
 DIST = ROOT / "dist"       # saída do build; não é versionada
 SITE_URL = "https://gromit.com.br"
-VERSION = "17"  # aumente para forçar recarregar CSS/JS no navegador
+VERSION = "18"  # aumente para forçar recarregar CSS/JS no navegador
 
 # arquivo em src/  ->  URL final
 PAGES = {
@@ -82,8 +82,8 @@ LAYOUT = """<!DOCTYPE html>
 
 <footer>
   <div class="wrap">
-    <span>© <span id="y">2026</span> Gromit Innovation</span>
-    <span class="flinks"><a href="/servicos/">Serviços</a><a href="/quem-somos/">Quem somos</a><a href="/produtos/">Produtos</a><a href="/contato/">Contato</a><a href="/privacidade/">Privacidade</a></span>
+    <span>© <span id="y">2026</span> Gromit Innovation<br><small>Fundada por Danilo Freitas dos Reis e Priscilla Correa</small></span>
+    <span class="flinks"><a href="/servicos/">Serviços</a><a href="/quem-somos/">Quem somos</a><a href="/produtos/">Produtos</a><a href="/contato/">Contato</a><a href="https://www.linkedin.com/company/gromit-innovation" target="_blank" rel="noopener">LinkedIn</a><a href="/privacidade/">Privacidade</a></span>
     <span class="tm">Logotipos e marcas citados pertencem aos respectivos proprietários e são usados apenas para identificar experiências e certificações.</span>
   </div>
 </footer>
