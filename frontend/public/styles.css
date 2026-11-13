@@ -871,3 +871,24 @@ section[id] { scroll-margin-top: -24px; }
 #contato { padding-bottom: 0; }
 footer { margin-top: 56px; }
 @media (max-width: 900px) { #contato { padding-bottom: 0; } footer { margin-top: 40px; } }
+
+/* Banner de consentimento de cookies (consent.js) */
+.consent {
+  position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 50;
+  max-width: 720px; margin: 0 auto; padding: 18px 20px;
+  display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  background: rgba(11, 27, 63, .96); border: 1px solid var(--line); border-radius: 16px;
+  box-shadow: 0 20px 60px -20px rgba(0, 0, 0, .7); backdrop-filter: blur(10px);
+  color: var(--text); font-size: .9rem; line-height: 1.5;
+}
+.consent[hidden] { display: none; }
+.consent p { flex: 1 1 320px; color: var(--muted); }
+.consent p a { color: var(--azure); text-decoration: underline; }
+.consent-btns { display: flex; gap: 10px; }
+.consent .btn { padding: 10px 18px; font: inherit; font-weight: 700; cursor: pointer; color: var(--text); }
+.consent .btn.primary { color: #0B1B3F; }
+footer .flinks button.linklike { background: none; border: 0; color: inherit; font: inherit; cursor: pointer; padding: 0; }
+footer .flinks button.linklike:hover { color: var(--text); }
+footer .founders { flex-basis: 100%; }
+@media (max-width: 520px) { .consent-btns { width: 100%; } .consent-btns .btn { flex: 1; } }
+.legal button.linklike { background: none; border: 0; padding: 0; font: inherit; color: var(--azure); text-decoration: underline; cursor: pointer; }
