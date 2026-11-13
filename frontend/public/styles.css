@@ -210,7 +210,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
 nav a, .nav a { transition: .2s; }
 .nav ul a.on { color: var(--text); background: var(--surface-2); }
 a.card { display: block; color: inherit; }
-footer .flinks { display: flex; gap: 18px; }
+footer .flinks { display: flex; gap: 18px; flex-wrap: wrap; }
 footer .flinks a:hover { color: var(--text); }
 
 .phead { padding-top: 150px; padding-bottom: 56px; }
@@ -685,7 +685,7 @@ footer { border-top: 1px solid var(--line); }
 
 /* GIFs reais dos produtos */
 .prod .art.gifart { padding: 0; background: #04070F; }
-.gifart img { width: 100%; height: 100%; object-fit: cover; object-position: left top; display: block; }
+.gifart img, .gifart video { width: 100%; height: 100%; object-fit: cover; object-position: left top; display: block; }
 .hero-art.gifhero { height: auto; padding: 0; display: block; background: #04070F; }
 .gifhero img { width: 100%; height: auto; display: block; }
 .gifnote { font-family: var(--mono); font-size: .74rem; color: var(--muted); margin-top: 10px; }
@@ -811,7 +811,7 @@ section { padding-top: 96px; }
 
 /* Produtos: versão desktop e mobile lado a lado */
 .prod .art.gifart { height: 290px; }
-.gifart .phone { position: absolute; right: 16px; bottom: 14px; width: 116px; height: auto; border-radius: 18px; border: 3px solid #0B1B3F; box-shadow: 0 18px 40px -10px rgba(0, 0, 0, .7), 0 0 0 1px rgba(255, 255, 255, .14); background: #fff; }
+.gifart .phone { object-fit: cover; position: absolute; right: 16px; bottom: 14px; width: 116px; height: auto; border-radius: 18px; border: 3px solid #0B1B3F; box-shadow: 0 18px 40px -10px rgba(0, 0, 0, .7), 0 0 0 1px rgba(255, 255, 255, .14); background: #fff; }
 @media (max-width: 900px) { .prod .art.gifart { height: 250px; } .gifart .phone { width: 100px; } }
 
 /* Cabeçalho de seção com ilustração animada ao lado */
@@ -892,3 +892,5 @@ footer .flinks button.linklike:hover { color: var(--text); }
 footer .founders { flex-basis: 100%; }
 @media (max-width: 520px) { .consent-btns { width: 100%; } .consent-btns .btn { flex: 1; } }
 .legal button.linklike { background: none; border: 0; padding: 0; font: inherit; color: var(--azure); text-decoration: underline; cursor: pointer; }
+.nf { min-height: 50vh; }
+.nf .btns { margin-top: 28px; }
