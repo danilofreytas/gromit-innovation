@@ -14,7 +14,7 @@ SRC = ROOT / "src"
 PUBLIC = ROOT / "public"   # arquivos estáticos copiados como estão (css, js, logos, CV, CNAME)
 DIST = ROOT / "dist"       # saída do build; não é versionada
 SITE_URL = "https://gromit.com.br"
-VERSION = "67"  # aumente para forçar recarregar CSS/JS no navegador
+VERSION = "68"  # aumente para forçar recarregar CSS/JS no navegador
 
 # arquivo em src/  ->  URL final
 PAGES = {
@@ -89,6 +89,24 @@ JSONLD = """
    "sameAs": ["https://www.linkedin.com/company/gromit-innovation"]}
   </script>"""
 
+# Página de cada sócio: ProfilePage com a pessoa como entidade principal.
+PROFILES = {
+    "/quem-somos/daniloreis/": ("Danilo Reis", "Fundador · DevOps, infraestrutura e SRE",
+        ["https://www.linkedin.com/in/danilofreitasdosreis/", "https://github.com/danilofreytas"]),
+    "/quem-somos/priscillacorrea/": ("Priscilla Correa", "Cofundadora · Desenvolvimento e produto",
+        ["https://www.linkedin.com/in/priscilla-correa", "https://github.com/prissycorrea", "https://priscillacorrea.com/"]),
+}
+
+
+def _profile_jsonld(url):
+    import json
+    name, role, same = PROFILES[url]
+    data = {"@context": "https://schema.org", "@type": "ProfilePage", "url": SITE_URL + url,
+            "mainEntity": {"@type": "Person", "name": name, "jobTitle": role, "url": SITE_URL + url, "sameAs": same,
+                           "worksFor": {"@type": "Organization", "name": "Gromit Innovation", "url": SITE_URL + "/"}}}
+    return '\n  <script type="application/ld+json">' + json.dumps(data, ensure_ascii=False) + '</script>'
+
+
 NAV = [("/#frentes", "Frentes"), ("/#servicos", "Serviços"), ("/#produtos", "Produtos"), ("/#equipe", "Equipe")]
 
 LAYOUT = """<!DOCTYPE html>
@@ -160,8 +178,21 @@ def meta(text, key):
     return m.group(1) if m else ""
 
 
+def _lastmod(fname):
+    """Data do último commit que mexeu no arquivo (YYYY-MM-DD); sem git, a data de hoje."""
+    import datetime, subprocess
+    try:
+        out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", str(SRC / fname)],
+                             capture_output=True, text=True, cwd=ROOT, timeout=10).stdout.strip()
+        if out:
+            return out
+    except Exception:
+        pass
+    return datetime.date.today().isoformat()
+
+
 def write_seo_files():
-    urls = "\n".join(f"  <url><loc>{SITE_URL}{u}</loc></url>" for u in PAGES.values())
+    urls = "\n".join(f"  <url><loc>{SITE_URL}{u}</loc><lastmod>{_lastmod(f)}</lastmod></url>" for f, u in PAGES.items())
     (DIST / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + "\n</urlset>\n",
@@ -193,7 +224,7 @@ def main():
         )
         html = LAYOUT.format(
             title=full_title, desc=meta(text, "desc"), canonical=SITE_URL + url,
-            site=SITE_URL, jsonld=JSONLD if url == "/" else "",
+            site=SITE_URL, jsonld=JSONLD if url == "/" else (_profile_jsonld(url) if url in PROFILES else ""),
             nav=nav, content=content.strip(), v=VERSION,
             logo=_logo_svg("lg"), flogo=_logo_svg("lg lg-foot"), starfield=_starfield(),
         )
@@ -202,7 +233,34 @@ def main():
         out.write_text(html, encoding="utf-8")
         print("ok", url)
     write_redirects()
+    write_404()
     write_seo_files()
+
+
+def write_404():
+    """404.html na raiz: o GitHub Pages serve esta página para qualquer endereço que não existe."""
+    content = (
+        '<div class="wrap phead nf">\n'
+        '    <p class="crumb"><a href="/">Início</a> / Página não encontrada</p>\n'
+        '    <h1>Esta página <span class="grad">não existe</span>.</h1>\n'
+        '    <p class="lead">O endereço pode ter mudado ou sido digitado errado. Veja por onde seguir:</p>\n'
+        '    <div class="btns">\n'
+        '      <a class="btn primary" href="/">Ir para o início →</a>\n'
+        '      <a class="btn" href="/#servicos">Ver serviços</a>\n'
+        '      <a class="btn" href="/#contato">Falar com a Gromit</a>\n'
+        '    </div>\n'
+        '  </div>'
+    )
+    nav = "\n".join(f'      <li><a href="{h}">{t}</a></li>' for h, t in NAV)
+    html = LAYOUT.format(
+        title="Página não encontrada | Gromit Innovation",
+        desc="A página procurada não existe no site da Gromit Innovation.",
+        canonical=SITE_URL + "/404.html", site=SITE_URL, jsonld="",
+        nav=nav, content=content, v=VERSION,
+        logo=_logo_svg("lg"), flogo=_logo_svg("lg lg-foot"), starfield=_starfield(),
+    ).replace('<link rel="canonical"', '<meta name="robots" content="noindex">\n  <link rel="canonical"', 1)
+    (DIST / "404.html").write_text(html, encoding="utf-8")
+    print("ok /404.html")
 
 
 def write_redirects():
