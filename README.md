@@ -1,4 +1,4 @@
-# Gromit Innovation: site institucional
+# Gromit Innovation: site institucional  
 
 Site estático da **Gromit Innovation** (consultoria em SRE, DevOps e Cloud), publicado em
 [gromit.com.br](https://gromit.com.br). Sem framework e sem banco de dados: o conteúdo mora em
