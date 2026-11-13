@@ -14,7 +14,7 @@ SRC = ROOT / "src"
 PUBLIC = ROOT / "public"   # arquivos estáticos copiados como estão (css, js, logos, CV, CNAME)
 DIST = ROOT / "dist"       # saída do build; não é versionada
 SITE_URL = "https://gromit.com.br"
-VERSION = "66"  # aumente para forçar recarregar CSS/JS no navegador
+VERSION = "67"  # aumente para forçar recarregar CSS/JS no navegador
 
 # arquivo em src/  ->  URL final
 PAGES = {
@@ -72,6 +72,23 @@ def _starfield():
             + "".join(out) + "</svg>")
 
 
+# Dados estruturados (schema.org) só na home: ajudam o Google a entender a empresa e os sócios.
+JSONLD = """
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "Organization",
+   "name": "Gromit Innovation", "url": "https://gromit.com.br/",
+   "logo": "https://gromit.com.br/icon-512.png", "email": "contato@gromit.com.br",
+   "description": "Consultoria em duas frentes: DevOps, infraestrutura e SRE, e desenvolvimento web, mobile e produto.",
+   "areaServed": "BR", "knowsLanguage": "pt-BR",
+   "founder": [
+     {"@type": "Person", "name": "Danilo Reis", "jobTitle": "Fundador · DevOps, infraestrutura e SRE",
+      "url": "https://gromit.com.br/quem-somos/daniloreis/", "sameAs": ["https://www.linkedin.com/in/danilofreitasdosreis/", "https://github.com/danilofreytas"]},
+     {"@type": "Person", "name": "Priscilla Correa", "jobTitle": "Cofundadora · Desenvolvimento e produto",
+      "url": "https://gromit.com.br/quem-somos/priscillacorrea/", "sameAs": ["https://www.linkedin.com/in/priscilla-correa", "https://github.com/prissycorrea"]}
+   ],
+   "sameAs": ["https://www.linkedin.com/company/gromit-innovation"]}
+  </script>"""
+
 NAV = [("/#frentes", "Frentes"), ("/#servicos", "Serviços"), ("/#produtos", "Produtos"), ("/#equipe", "Equipe")]
 
 LAYOUT = """<!DOCTYPE html>
@@ -89,7 +106,12 @@ LAYOUT = """<!DOCTYPE html>
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{desc}">
   <meta property="og:url" content="{canonical}">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="{site}/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Gromit Innovation: DevOps e desenvolvimento web e mobile">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{site}/og-image.png">{jsonld}
   <link rel="icon" href="/favicon.ico?v={v}" sizes="48x48">
   <link rel="icon" href="/favicon.svg?v={v}" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png?v={v}">
@@ -120,12 +142,14 @@ LAYOUT = """<!DOCTYPE html>
 <footer>
   <div class="wrap">
     <span class="fbrand">{flogo}<small>© <span id="y">2026</span> Gromit Innovation</small></span>
-    <span class="flinks"><a href="/#frentes">Frentes</a><a href="/#servicos">Serviços</a><a href="/#produtos">Produtos</a><a href="/#equipe">Equipe</a><a href="/#contato">Contato</a><a href="mailto:contato@gromit.com.br">E-mail</a><a href="https://www.linkedin.com/company/gromit-innovation" target="_blank" rel="noopener">LinkedIn</a><a href="/privacidade/">Privacidade</a></span>
+    <span class="flinks"><a href="/#frentes">Frentes</a><a href="/#servicos">Serviços</a><a href="/#produtos">Produtos</a><a href="/#equipe">Equipe</a><a href="/#contato">Contato</a><a href="mailto:contato@gromit.com.br">E-mail</a><a href="https://www.linkedin.com/company/gromit-innovation" target="_blank" rel="noopener">LinkedIn</a><a href="/privacidade/">Privacidade</a><button type="button" class="linklike" data-consent-open>Preferências de cookies</button></span>
+    <span class="founders">Fundada por Danilo Reis e Priscilla Correa.</span>
     <span class="tm">Logotipos e marcas citados pertencem aos respectivos proprietários e são usados apenas para identificar experiências e certificações.</span>
   </div>
 </footer>
 
 <script src="/script.js?v={v}"></script>
+<script src="/consent.js?v={v}"></script>
 </body>
 </html>
 """
@@ -169,6 +193,7 @@ def main():
         )
         html = LAYOUT.format(
             title=full_title, desc=meta(text, "desc"), canonical=SITE_URL + url,
+            site=SITE_URL, jsonld=JSONLD if url == "/" else "",
             nav=nav, content=content.strip(), v=VERSION,
             logo=_logo_svg("lg"), flogo=_logo_svg("lg lg-foot"), starfield=_starfield(),
         )
