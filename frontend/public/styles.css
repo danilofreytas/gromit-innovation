@@ -917,3 +917,6 @@ footer .founders { flex-basis: 100%; }
 @media (max-width: 520px) { .stepcols { grid-template-columns: 1fr; } }
 .nav ul a { white-space: nowrap; }
 .sol .ic { color: var(--azure); }
+.sol .sol-head { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+.sol .sol-head .ic { margin: 0; flex: none; }
+.sol .sol-head h3 { margin: 0; }
