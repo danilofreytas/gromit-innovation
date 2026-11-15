@@ -920,3 +920,6 @@ footer .founders { flex-basis: 100%; }
 .sol .sol-head { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
 .sol .sol-head .ic { margin: 0; flex: none; }
 .sol .sol-head h3 { margin: 0; }
+/* Menu com 5 itens: pílula mais larga para o botão Contato caber dentro */
+.nav .pill { max-width: min(840px, calc(100% - 32px)); }
+.nav .cta, .nav .logo { flex: none; }
