@@ -894,3 +894,25 @@ footer .founders { flex-basis: 100%; }
 .legal button.linklike { background: none; border: 0; padding: 0; font: inherit; color: var(--azure); text-decoration: underline; cursor: pointer; }
 .nf { min-height: 50vh; }
 .nf .btns { margin-top: 28px; }
+
+/* Seção "O que dá pra fazer com a gente" (linguagem simples) */
+#solucoes .sechead-text { margin-bottom: 40px; }
+.sol .card h3 { font-size: 1.2rem; }
+.sol .sol-ex { margin-top: 14px; font-size: .86rem; color: #c9d1e0; opacity: .85; }
+.sol .sol-ex a { color: var(--azure); }
+.steps.card { margin-top: 16px; padding: 24px 28px; }
+.steps .hk { display: block; font-family: var(--mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--azure); margin-bottom: 14px; }
+.stepcols { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.stepcols b { display: block; margin-bottom: 4px; }
+.stepcols span { color: var(--muted); font-size: .92rem; }
+.hirecols { grid-template-columns: repeat(3, 1fr); }
+.hirecols > div { border-right: 1px solid var(--line); }
+.hirecols > div:last-child { border-right: 0; }
+@media (max-width: 900px) {
+  .stepcols { grid-template-columns: 1fr 1fr; }
+  .hirecols { grid-template-columns: 1fr; }
+  .hirecols > div { border-right: 0; border-bottom: 1px solid var(--line); padding: 0 0 16px; margin-bottom: 16px; }
+  .hirecols > div:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+}
+@media (max-width: 520px) { .stepcols { grid-template-columns: 1fr; } }
+.nav ul a { white-space: nowrap; }
