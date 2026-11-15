@@ -14,7 +14,7 @@ SRC = ROOT / "src"
 PUBLIC = ROOT / "public"   # arquivos estáticos copiados como estão (css, js, logos, CV, CNAME)
 DIST = ROOT / "dist"       # saída do build; não é versionada
 SITE_URL = "https://gromit.com.br"
-VERSION = "69"  # aumente para forçar recarregar CSS/JS no navegador
+VERSION = "70"  # aumente para forçar recarregar CSS/JS no navegador
 
 # arquivo em src/  ->  URL final
 PAGES = {
@@ -107,7 +107,7 @@ def _profile_jsonld(url):
     return '\n  <script type="application/ld+json">' + json.dumps(data, ensure_ascii=False) + '</script>'
 
 
-NAV = [("/#frentes", "Frentes"), ("/#servicos", "Serviços"), ("/#produtos", "Produtos"), ("/#equipe", "Equipe")]
+NAV = [("/#solucoes", "O que fazemos"), ("/#frentes", "Frentes"), ("/#servicos", "Serviços"), ("/#produtos", "Produtos"), ("/#equipe", "Equipe")]
 
 LAYOUT = """<!DOCTYPE html>
 <html lang="pt-BR">
@@ -160,7 +160,7 @@ LAYOUT = """<!DOCTYPE html>
 <footer>
   <div class="wrap">
     <span class="fbrand">{flogo}<small>© <span id="y">2026</span> Gromit Innovation</small></span>
-    <span class="flinks"><a href="/#frentes">Frentes</a><a href="/#servicos">Serviços</a><a href="/#produtos">Produtos</a><a href="/#equipe">Equipe</a><a href="/#contato">Contato</a><a href="mailto:contato@gromit.com.br">E-mail</a><a href="https://www.linkedin.com/company/gromit-innovation" target="_blank" rel="noopener">LinkedIn</a><a href="/privacidade/">Privacidade</a><button type="button" class="linklike" data-consent-open>Preferências de cookies</button></span>
+    <span class="flinks"><a href="/#solucoes">O que fazemos</a><a href="/#frentes">Frentes</a><a href="/#servicos">Serviços</a><a href="/#produtos">Produtos</a><a href="/#equipe">Equipe</a><a href="/#contato">Contato</a><a href="mailto:contato@gromit.com.br">E-mail</a><a href="https://www.linkedin.com/company/gromit-innovation" target="_blank" rel="noopener">LinkedIn</a><a href="/privacidade/">Privacidade</a><button type="button" class="linklike" data-consent-open>Preferências de cookies</button></span>
     <span class="founders">Fundada por Danilo Reis e Priscilla Correa.</span>
     <span class="tm">Logotipos e marcas citados pertencem aos respectivos proprietários e são usados apenas para identificar experiências e certificações.</span>
   </div>
